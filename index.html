@@ -439,8 +439,7 @@
       
         
           
-            <p><!--Read More--> ## T1 模仿游戏</p>
-<blockquote>
+            <h2 id="T1-模仿游戏"><a href="#T1-模仿游戏" class="headerlink" title="T1 模仿游戏"></a>T1 模仿游戏</h2><blockquote>
 <p>给出两个排列A和B（长度m），共n次操作，每次随机从A取出元素x，记录B[A[x]]，同时，每一次操作前，A往后移一格（环），每当A移完一圈，B移一格</p>
 </blockquote>
 <p>因为数据随机，且$m&lt;=n^2$故在n次操作中，每个元素都期望被选到一次。首先，我们可以给每次操作的x加上当前的i（即A往后移动的格数），这样，对于整个序列，我们可以当作对初始A元素的选取。而当我们确定A这个排列时，通过 B[X[i]+i/m%m]=Y[i]能很快得到B这个排列；<br>观察在整个取数中，当B[X[i]+i/m%m]=Y[i],此时X的取值是不固定的。而当出现两个（甚至多个）相同的Y[i]时，可知 </p>
@@ -791,7 +790,7 @@
         }
       });
     </script>
-    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
   
 
 
