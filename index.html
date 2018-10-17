@@ -354,144 +354,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/10/17/题解1/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="WannaBTL">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Another Limit">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/10/17/题解1/" itemprop="url">提高组考试</a></h1>
-        
-
-        <div class="post-meta">
-        
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-10-17T22:42:06+08:00">
-                2018-10-17
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="T1-模仿游戏"><a href="#T1-模仿游戏" class="headerlink" title="T1 模仿游戏"></a>T1 模仿游戏</h2><blockquote>
-<p>给出两个排列A和B（长度m），共n次操作，每次随机从A取出元素x，记录B[A[x]]，同时，每一次操作前，A往后移一格（环），每当A移完一圈，B移一格</p>
-</blockquote>
-<p>因为数据随机，且$m&lt;=n^2$故在n次操作中，每个元素都期望被选到一次。首先，我们可以给每次操作的x加上当前的i（即A往后移动的格数），这样，对于整个序列，我们可以当作对初始A元素的选取。而当我们确定A这个排列时，通过 B[X[i]+i/m%m]=Y[i]能很快得到B这个排列；<br>观察在整个取数中，当B[X[i]+i/m%m]=Y[i],此时X的取值是不固定的。而当出现两个（甚至多个）相同的Y[i]时，可知 </p>
-<script type="math/tex; mode=display">B[X[i]+i/m \mod m]=B[X[j]+j/m \mod m]</script><script type="math/tex; mode=display">X[i]+i/m \mod m=X[j]+j/m \mod m</script><p>我们可以得到</p>
-<script type="math/tex; mode=display">X[i]-X[j]=j/m \mod m-i/m \mod m</script><p>故以并查集维护每个元素的差，再以根节点值为零，最后的差值就是A排列的值</p>
-<h2 id="T2-随机游走"><a href="#T2-随机游走" class="headerlink" title="T2 随机游走"></a>T2 随机游走</h2><blockquote>
-<p>求出一张图中期望距离最大的一条路径</p>
-</blockquote>
-<p>首先，求路径就得知道边权，而这道题中的边权很显然就是从i走向它的父亲，和从i的父亲走到i的期望距离。（这样设好推式子）<br>那么对于第一种情况 从i走向它的父亲期望为 直接走向父亲加上走向儿子再走向父亲</p>
-<script type="math/tex; mode=display">U_i= \frac {1+\sum_{j \in Son_i}{U_i+U_j+1}}{Du_i}</script><p> 化简得</p>
-<script type="math/tex; mode=display">U_i=Du_i+\sum_{j \in Son_i}</script><p> 同理，维护从i得父亲走到i的期望距离</p>
-<h2 id="T3-强连通"><a href="#T3-强连通" class="headerlink" title="T3 强连通"></a>T3 强连通</h2><p>n个点随机连边，给出n个权$ d_n $，1所在联通块大小x，求Dx的期望</p>
-<p>要求期望，无非求出总权 和 方案数<br>对于总权，我们是分了两个部分的 即点权和联通块个数<br>对于联通块个数 我们定义$ a[i] $来表示1（只是为了防止重复，不具有实际意义）所处的大小为i的联通块的方案数（即这张图一共能生成几个）<br>那么：</p>
-<script type="math/tex; mode=display">a[i]=2^{\frac {i*(i-1)}{2}}-\sum_{j=1}^{j<i}{C_{i}^{j}*a[j]*2^{\frac{(i-j)*(i-j-1)}{2}}}</script><p>即 所有连边情况-包含1的大小为j的联通块和剩下i-j的块自行连接（即不合法情况）</p>
-<p>而用f[i]来表示大小不大于i的联通块的贡献</p>
-<script type="math/tex; mode=display">f[i]=\sum _{j=1}^{j<=i}{a[j]*C_i^j*(f[i-j]+2^{\frac {(i-j)*(i-j-1)}{2}}*d[j]*j)}</script><p>括号里分别算的是1 在这i-j个点里的贡献和在j个点里的贡献</p>
-<p>注意，每个点的贡献是独立的，所以乘 j</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -538,7 +400,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-count">1</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -551,7 +413,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-count">1</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
