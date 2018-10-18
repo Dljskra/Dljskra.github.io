@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="考试," />
+  <meta name="keywords" content="究," />
 
 
 
@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="T1 模仿游戏 给出两个排列A和B（长度m），共n次操作，每次随机从A取出元素x，记录B[A[x]]，同时，每一次操作前，A往后移一格（环），每当A移完一圈，B移一格">
-<meta name="keywords" content="考试">
+<meta name="description" content="※※※※">
+<meta name="keywords" content="究">
 <meta property="og:type" content="article">
 <meta property="og:title" content="提高组考试">
 <meta property="og:url" content="http://yoursite.com/2018/10/17/题解1/index.html">
 <meta property="og:site_name" content="Another Limit">
-<meta property="og:description" content="T1 模仿游戏 给出两个排列A和B（长度m），共n次操作，每次随机从A取出元素x，记录B[A[x]]，同时，每一次操作前，A往后移一格（环），每当A移完一圈，B移一格">
+<meta property="og:description" content="※※※※">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-10-17T15:47:11.948Z">
+<meta property="og:updated_time" content="2018-10-18T08:11:34.282Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="提高组考试">
-<meta name="twitter:description" content="T1 模仿游戏 给出两个排列A和B（长度m），共n次操作，每次随机从A取出元素x，记录B[A[x]]，同时，每一次操作前，A往后移一格（环），每当A移完一圈，B移一格">
+<meta name="twitter:description" content="※※※※">
 
 
 
@@ -311,10 +311,13 @@
       
 
       
-        <h2 id="T1-模仿游戏"><a href="#T1-模仿游戏" class="headerlink" title="T1 模仿游戏"></a>T1 模仿游戏</h2><blockquote>
+        <ul>
+<li>※※※※<a id="more"></a>
+<h2 id="T1-模仿游戏"><a href="#T1-模仿游戏" class="headerlink" title="T1 模仿游戏"></a>T1 模仿游戏</h2><blockquote>
 <p>给出两个排列A和B（长度m），共n次操作，每次随机从A取出元素x，记录B[A[x]]，同时，每一次操作前，A往后移一格（环），每当A移完一圈，B移一格</p>
 </blockquote>
-<a id="more"></a>
+</li>
+</ul>
 <p>因为数据随机，且$m&lt;=n^2$故在n次操作中，每个元素都期望被选到一次。首先，我们可以给每次操作的x加上当前的i（即A往后移动的格数），这样，对于整个序列，我们可以当作对初始A元素的选取。而当我们确定A这个排列时，通过 B[X[i]+i/m%m]=Y[i]能很快得到B这个排列；<br>观察在整个取数中，当B[X[i]+i/m%m]=Y[i],此时X的取值是不固定的。而当出现两个（甚至多个）相同的Y[i]时，可知 </p>
 <script type="math/tex; mode=display">B[X[i]+i/m \mod m]=B[X[j]+j/m \mod m]</script><script type="math/tex; mode=display">X[i]+i/m \mod m=X[j]+j/m \mod m</script><p>我们可以得到</p>
 <script type="math/tex; mode=display">X[i]-X[j]=j/m \mod m-i/m \mod m</script><p>故以并查集维护每个元素的差，再以根节点值为零，最后的差值就是A排列的值</p>
@@ -347,7 +350,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/考试/" rel="tag"># 考试</a>
+            <a href="/tags/究/" rel="tag"># 究</a>
           
         </div>
       
@@ -360,8 +363,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/10/17/Welcome/" rel="next" title="扉页">
-                <i class="fa fa-chevron-left"></i> 扉页
+              <a href="/2018/10/17/Welcome/" rel="next" title="Legend">
+                <i class="fa fa-chevron-left"></i> Legend
               </a>
             
           </div>
@@ -449,7 +452,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-count">4</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -462,7 +465,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-count">4</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
