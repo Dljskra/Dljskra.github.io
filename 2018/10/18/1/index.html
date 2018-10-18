@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="Another Limit">
 <meta property="og:description" content="Code Level : ※   Thingking Level:  ※※">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-10-18T16:13:55.862Z">
+<meta property="og:updated_time" content="2018-10-18T23:37:48.264Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="序列">
 <meta name="twitter:description" content="Code Level : ※   Thingking Level:  ※※">
@@ -317,8 +317,7 @@
 </li>
 </ul>
 <h1 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h1><blockquote>
-<p>给定长度为 $ n $ 的序列 $ a_n $ 和 $ x $ ,可以给一个连续的区间加 $  d  (d \in [-x,x]) $<br> 求最长LIS长度</p>
-</blockquote>
+<script type="math/tex; mode=display">给定长度为  n  的序列  a_n  和  x  ,可以给一个连续的区间加  \ d \ (d \in [-x,x])</script><script type="math/tex; mode=display">求最长LIS长度</script></blockquote>
 <h1 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h1><blockquote>
 <p>这题唯一的思维难度是它的小 <em>trick</em> </p>
 <ul>
@@ -331,8 +330,8 @@
 <li>对于求最长LIS，考虑以一个单调栈来存储我们选择的序列：<blockquote>
 <p>那么，对于新加入的元素 x 和当前栈顶元素 y，考虑以 x 为尾的 LIS</p>
 <ol>
-<li>如果$ (x&gt;y) $ 直接将 x 加入栈尾，此时以 x 为尾的 LIS 长度为栈的大小</li>
-<li>否则  以 x 尾的 LIS长度即为以栈中第一个大于等于x的 p 的为尾的 LIS 长度。根据贪心，我们可以用x去更新p，因为$x&lt;=p $</li>
+<li>如果 (x&gt;y)  直接将 x 加入栈尾，此时以 x 为尾的 LIS 长度为栈的大小</li>
+<li>否则  以 x 尾的 LIS长度即为以栈中第一个大于等于x的 p 的为尾的 LIS 长度。根据贪心，我们可以用x去更新p，因为x&lt;=p </li>
 </ol>
 </blockquote>
 </li>
@@ -709,6 +708,26 @@
   
 
   
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
   
 
 
