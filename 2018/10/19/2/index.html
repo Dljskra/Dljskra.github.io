@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="典," />
+  <meta name="keywords" content="图," />
 
 
 
@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="Write The Code ,Change The World">
-<meta name="keywords" content="典">
+<meta name="description" content="Code Level: ※ Thinking Level: ※">
+<meta name="keywords" content="图">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Legend">
-<meta property="og:url" content="http://yoursite.com/2018/10/17/Welcome/index.html">
+<meta property="og:title" content="键盘">
+<meta property="og:url" content="http://yoursite.com/2018/10/19/2/index.html">
 <meta property="og:site_name" content="Another Limit">
-<meta property="og:description" content="Write The Code ,Change The World">
+<meta property="og:description" content="Code Level: ※ Thinking Level: ※">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-10-18T15:20:44.514Z">
+<meta property="og:updated_time" content="2018-10-19T16:32:09.713Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Legend">
-<meta name="twitter:description" content="Write The Code ,Change The World">
+<meta name="twitter:title" content="键盘">
+<meta name="twitter:description" content="Code Level: ※ Thinking Level: ※">
 
 
 
@@ -120,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/10/17/Welcome/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/10/19/2/"/>
 
 
 
 
 
-  <title>Legend | Another Limit</title>
+  <title>键盘 | Another Limit</title>
   
 
 
@@ -243,7 +243,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/10/17/Welcome/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/10/19/2/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="WannaBTL">
@@ -260,15 +260,11 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Legend</h1>
+          <h1 class="post-title" itemprop="name headline">键盘</h1>
         
 
         <div class="post-meta">
         
-            <i class="fa fa-thumb-tack"></i>
-            <font color=7D26CD>置顶</font>
-            <span class="post-meta-divider">|</span>
-          
           <span class="post-time">
             
               <span class="post-meta-item-icon">
@@ -277,8 +273,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-10-17T17:39:28+08:00">
-                2018-10-17
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-10-19T07:46:06+08:00">
+                2018-10-19
               </time>
             
 
@@ -315,7 +311,28 @@
       
 
       
-        <h3 id="Write-The-Code-Change-The-World"><a href="#Write-The-Code-Change-The-World" class="headerlink" title="Write The Code ,Change The World"></a>Write The Code ,Change The World</h3>
+        <ul>
+<li>Code Level: ※</li>
+<li>Thinking Level: ※<a id="more"></a>
+</li>
+</ul>
+<h1 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h1><p>现有长度为x的序列，以如下操作:</p>
+<blockquote>
+<ol>
+<li>加 1（消耗 1）</li>
+<li>全选（消耗 2）</li>
+<li>复制（消耗 2）</li>
+<li>粘贴（消耗 2）</li>
+<li>删除（消耗 1） （删除一个或所选择）</li>
+</ol>
+</blockquote>
+<p>求最小消耗使序列变为n</p>
+<h1 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h1><pre><code>发现是一个以长度为节点的图，跑最短路即可
+</code></pre><h1 id="Details"><a href="#Details" class="headerlink" title="Details"></a>Details</h1><ul>
+<li>删除操作只存在两种，删1或删所有，所以所有大于N的状态可以直接通过现状态推导</li>
+</ul>
+<h1 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h1><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;queue&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> Nn=<span class="number">2</span>*<span class="number">1e6</span>+<span class="number">5</span>;</span><br><span class="line"><span class="keyword">int</span> X,N,Dist[Nn],Vis[Nn]; <span class="built_in">queue</span>&lt;<span class="keyword">int</span>&gt;q;</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Alpha</span>&#123;</span></span><br><span class="line">    <span class="keyword">int</span> id,d;</span><br><span class="line">    <span class="keyword">friend</span> <span class="keyword">bool</span> <span class="keyword">operator</span>&lt;(Alpha a,Alpha b)&#123;</span><br><span class="line">        <span class="keyword">return</span> a.d&gt;b.d;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Bre</span><span class="params">(<span class="keyword">int</span> i,<span class="keyword">int</span> j,<span class="keyword">int</span> w)</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(Dist[i]&gt;Dist[j]+w)&#123;</span><br><span class="line">        Dist[i]=Dist[j]+w;</span><br><span class="line">        <span class="keyword">if</span>(!Vis[i]) q.push(i);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%d%d"</span>,&amp;X,&amp;N); <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;=N;i++) Dist[i]=<span class="number">0x3f3f3f3f</span>;</span><br><span class="line">    <span class="keyword">if</span>(X&gt;N)&#123; Dist[<span class="number">0</span>]=<span class="number">3</span>; q.push(<span class="number">0</span>); Vis[<span class="number">0</span>]=<span class="number">1</span>; Dist[N]=X-N;&#125;</span><br><span class="line">    <span class="keyword">else</span>&#123;Dist[X]=<span class="number">0</span>; Dist[N]=N-X; q.push(X); Vis[X]=<span class="number">1</span>;&#125;</span><br><span class="line">    <span class="keyword">while</span>(!q.empty())&#123;</span><br><span class="line">        <span class="keyword">int</span> now=q.front();q.pop();</span><br><span class="line">        <span class="keyword">if</span>(now&lt;N) Bre(now+<span class="number">1</span>,now,<span class="number">1</span>);</span><br><span class="line">        <span class="keyword">if</span>(now)&#123;</span><br><span class="line">            Bre(now<span class="number">-1</span>,now,<span class="number">1</span>);</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i*now&lt;=N;i++)</span><br><span class="line">            <span class="keyword">if</span>(now*(i+<span class="number">1</span>)&gt;N) Bre(N,now,<span class="number">4</span>+<span class="number">2</span>*i+now*(i+<span class="number">1</span>)-N);</span><br><span class="line">            <span class="keyword">else</span> Bre(now*(i+<span class="number">1</span>),now,i*<span class="number">2</span>+<span class="number">4</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        Vis[now]=<span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%d\n"</span>,Dist[N]);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
       
     </div>
     
@@ -332,7 +349,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/典/" rel="tag"># 典</a>
+            <a href="/tags/图/" rel="tag"># 图</a>
           
         </div>
       
@@ -345,14 +362,18 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
+              <a href="/2018/10/18/1/" rel="next" title="序列">
+                <i class="fa fa-chevron-left"></i> 序列
+              </a>
+            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/10/18/祝福/" rel="prev" title="祝福">
-                祝福 <i class="fa fa-chevron-right"></i>
+              <a href="/2018/10/20/3/" rel="prev" title="源泉">
+                源泉 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -476,7 +497,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Write-The-Code-Change-The-World"><span class="nav-number">1.</span> <span class="nav-text">Write The Code ,Change The World</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Description"><span class="nav-number">1.</span> <span class="nav-text">Description</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Solution"><span class="nav-number">2.</span> <span class="nav-text">Solution</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Details"><span class="nav-number">3.</span> <span class="nav-text">Details</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Code"><span class="nav-number">4.</span> <span class="nav-text">Code</span></a></li></ol></div>
             
 
           </div>
@@ -683,6 +704,26 @@
   
 
   
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
   
 
 
