@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="数论," />
+  <meta name="keywords" content="贪心,特殊思想," />
 
 
 
@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="Code Level: 无 Thingking Level: ※">
-<meta name="keywords" content="数论">
+<meta name="description" content="Code Level: ※ Thinking Level: ※">
+<meta name="keywords" content="贪心,特殊思想">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Lucas定理">
-<meta property="og:url" content="http://yoursite.com/2018/10/20/ProofofLucas/index.html">
+<meta property="og:title" content="小w与炒股">
+<meta property="og:url" content="http://yoursite.com/2018/10/20/小w与炒股/index.html">
 <meta property="og:site_name" content="Another Limit">
-<meta property="og:description" content="Code Level: 无 Thingking Level: ※">
+<meta property="og:description" content="Code Level: ※ Thinking Level: ※">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-10-20T07:21:59.698Z">
+<meta property="og:updated_time" content="2018-10-20T08:02:26.332Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Lucas定理">
-<meta name="twitter:description" content="Code Level: 无 Thingking Level: ※">
+<meta name="twitter:title" content="小w与炒股">
+<meta name="twitter:description" content="Code Level: ※ Thinking Level: ※">
 
 
 
@@ -120,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/10/20/ProofofLucas/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/10/20/小w与炒股/"/>
 
 
 
 
 
-  <title>Lucas定理 | Another Limit</title>
+  <title>小w与炒股 | Another Limit</title>
   
 
 
@@ -243,7 +243,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/10/20/ProofofLucas/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/10/20/小w与炒股/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="WannaBTL">
@@ -260,7 +260,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Lucas定理</h1>
+          <h1 class="post-title" itemprop="name headline">小w与炒股</h1>
         
 
         <div class="post-meta">
@@ -273,7 +273,7 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-10-20T14:31:52+08:00">
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-10-20T15:27:35+08:00">
                 2018-10-20
               </time>
             
@@ -312,16 +312,14 @@
 
       
         <ul>
-<li>Code Level: 无</li>
-<li>Thingking Level: ※<a id="more"></a>
+<li>Code Level: ※</li>
+<li>Thinking Level: ※<a id="more"></a>
 </li>
 </ul>
-<h2 id="Description："><a href="#Description：" class="headerlink" title="Description："></a>Description：</h2><script type="math/tex; mode=display">\binom{n}{m} \equiv \binom{\ {\lfloor {\frac {n}{p}\ } \rfloor}\ }{\ {\lfloor {\frac{m}{p}\ } \rfloor}\ }*\binom{n\mod p}{m\mod p} \pmod{p}</script><h2 id="Proof"><a href="#Proof" class="headerlink" title="Proof:"></a>Proof:</h2><p>费马小定理可得：</p>
-<script type="math/tex; mode=display">(1+x)^n\equiv 1+x\equiv 1+x^n \pmod{p}</script><script type="math/tex; mode=display">(1+x)^n=(1+x)^{\lfloor \frac{n}{p} \rfloor} *(1+x)^{n\mod p}</script><p>观察它们</p>
-<script type="math/tex; mode=display">x^m的系数</script><script type="math/tex; mode=display">\binom{n}{m}=\binom{\lfloor \frac{n}{p} \rfloor}{i}*\binom{n\mod p}{j}(i+j=m)</script><p>则一定存在i，j使：</p>
-<script type="math/tex; mode=display">i=\lfloor \frac{m}{p} \rfloor\ ,\ j=m \mod p</script><p>得证</p>
-<h2 id="Delta"><a href="#Delta" class="headerlink" title="Delta"></a>Delta</h2><p>将上述Lucas定理看作递归的化可得：</p>
-<script type="math/tex; mode=display">\binom{n}{m}\equiv \prod_{i=1}^{i<=k} \binom{a_i}{b_i}\pmod {p}</script><script type="math/tex; mode=display">a_i,b_i分别为p进制下的同位值</script>
+<h1 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h1><p>小W卖酒小赚了一笔，决定拿着这笔钱去炒股。<br>他预测了某支股票后n天的价格，其中第i天股价为pi，他打算利用这个赚钱。由于他实在太懒了，每天他至多只会交易1股（也就是说，他每天可以买进一股，卖出一股，或者什么都不做）。蒟蒻最开始不拥有任何股票，他希望n天后同样不拥有任何股票，并且赚最多的钱。他希望你帮他计算最多能赚多少钱。</p>
+<h1 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h1><p>可以用中转站思想<br>对于每一站i，我们计入卖它的贡献（先计入i的值来防止负贡献，往下看），而当后面有情况j使它更优时，其优化方案也即是</p>
+<p><script type="math/tex">ans=ans+p_k-p_i+p_j-p_k=ans+p_j-p_i</script> (令i的票从k买来的)<br>可见，当i能两次被取出算贡献：在i买和在i卖得优化（前面在计算i之前先计入i得值就是这个原理）</p>
+<h1 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h1><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;queue&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> ll;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> Nn=<span class="number">1e6</span>+<span class="number">5</span>;</span><br><span class="line"><span class="keyword">int</span> N;ll Ans=<span class="number">0</span>;priority_queue&lt;ll&gt;q;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;N); </span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> x,i=<span class="number">1</span>;i&lt;=N;i++)&#123; <span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;x); q.push(-x); q.push(-x); Ans+=x+q.top(); q.pop(); &#125;</span><br><span class="line">    <span class="built_in">cout</span>&lt;&lt;Ans;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
       
     </div>
     
@@ -338,7 +336,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/数论/" rel="tag"># 数论</a>
+            <a href="/tags/贪心/" rel="tag"># 贪心</a>
+          
+            <a href="/tags/特殊思想/" rel="tag"># 特殊思想</a>
           
         </div>
       
@@ -351,8 +351,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/10/20/tree/" rel="next" title="tree">
-                <i class="fa fa-chevron-left"></i> tree
+              <a href="/2018/10/20/ProofofLucas/" rel="next" title="Lucas定理">
+                <i class="fa fa-chevron-left"></i> Lucas定理
               </a>
             
           </div>
@@ -361,8 +361,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/10/20/小w与炒股/" rel="prev" title="小w与炒股">
-                小w与炒股 <i class="fa fa-chevron-right"></i>
+              <a href="/2018/10/20/小w与面试/" rel="prev" title="小w与面试">
+                小w与面试 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -486,7 +486,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Description："><span class="nav-number">1.</span> <span class="nav-text">Description：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Proof"><span class="nav-number">2.</span> <span class="nav-text">Proof:</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Delta"><span class="nav-number">3.</span> <span class="nav-text">Delta</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Description"><span class="nav-number">1.</span> <span class="nav-text">Description</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Solution"><span class="nav-number">2.</span> <span class="nav-text">Solution</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Code"><span class="nav-number">3.</span> <span class="nav-text">Code</span></a></li></ol></div>
             
 
           </div>
@@ -693,26 +693,6 @@
   
 
   
-  
-    <script type="text/x-mathjax-config">
-      MathJax.Hub.Config({
-        tex2jax: {
-          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
-          processEscapes: true,
-          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
-        }
-      });
-    </script>
-
-    <script type="text/x-mathjax-config">
-      MathJax.Hub.Queue(function() {
-        var all = MathJax.Hub.getAllJax(), i;
-        for (i=0; i < all.length; i += 1) {
-          all[i].SourceElement().parentNode.className += ' has-jax';
-        }
-      });
-    </script>
-    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
   
 
 
