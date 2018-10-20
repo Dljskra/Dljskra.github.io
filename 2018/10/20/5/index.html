@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="数," />
+  <meta name="keywords" content="数论," />
 
 
 
@@ -80,14 +80,14 @@
 
 
 <meta name="description" content="Code Level: ※ Thinking Level: ※※※">
-<meta name="keywords" content="数">
+<meta name="keywords" content="数论">
 <meta property="og:type" content="article">
 <meta property="og:title" content="异或">
 <meta property="og:url" content="http://yoursite.com/2018/10/20/5/index.html">
 <meta property="og:site_name" content="Another Limit">
 <meta property="og:description" content="Code Level: ※ Thinking Level: ※※※">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-10-20T02:03:15.948Z">
+<meta property="og:updated_time" content="2018-10-20T03:24:27.792Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="异或">
 <meta name="twitter:description" content="Code Level: ※ Thinking Level: ※※※">
@@ -318,7 +318,7 @@
 </ul>
 <h1 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h1><p>一棵树，根编号1，原始带权，到第i+1天变为第i天子树节点的异或和。<br>求 第x天 根编号 </p>
 <script type="math/tex; mode=display">n, q ≤ 200000;\ \ \ Ai, x ≤ 10^{18}</script><h1 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h1><p>对于一棵树，子树节点对根节点的贡献只与其深度有关<br>进一步,第i天深度为j的子节点对根的贡献为第i-1天所有子树对根节点的贡献（第i-1天所有子树关深度于j节点的系数在第i天叠加），即</p>
-<script type="math/tex; mode=display">d_{i,j}=\sum_{k=0}^{k<=j}{d_i-1,k}</script><p>(定义根节点深度为0，是为了方便式子的转化)<br>发现每一步递推决策为当前步选[0,j]和上一步组成j的方案数<br>则此递推式的含义可为，i个未知数（可以为零）和为j的方案数<br>故可直接得出</p>
+<script type="math/tex; mode=display">d_{i,j}=\sum_{k=0}^{k<=j}{d_{i-1,k}}</script><p>(定义根节点深度为0，是为了方便式子的转化)<br>发现每一步递推决策为当前步选[0,j]和上一步组成j的方案数<br>则此递推式的含义可为，i个未知数（可以为零）和为j的方案数<br>故可直接得出</p>
 <script type="math/tex; mode=display">d_{i,j}=C_{i+j-1}^{j-1}\ \ \ (隔板法)</script><p>而又因为贡献是异或和，所以只关心系数的奇偶性<br>即当且只当此时系数为奇时，此深度节点会对根节点造成贡献<br>即关心</p>
 <script type="math/tex; mode=display">(_m^n) mod \ 2==1</script><p>根据Lucas定理：</p>
 <script type="math/tex; mode=display">(_m^n) mod \ 2=(_{m\ mod\ 2}^{n\ mod\ 2})*(_{m/2}^{n/2})</script><p>而又</p>
@@ -345,7 +345,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/数/" rel="tag"># 数</a>
+            <a href="/tags/数论/" rel="tag"># 数论</a>
           
         </div>
       
@@ -447,7 +447,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">9</span>
+                  <span class="site-state-item-count">11</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -460,7 +460,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-count">7</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>

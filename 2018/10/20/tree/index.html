@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="图论," />
+  <meta name="keywords" content="STL," />
 
 
 
@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="Code Level: ※ Thinking Level: ※">
-<meta name="keywords" content="图论">
+<meta name="description" content="Code Level:※※ Thinking Level:※">
+<meta name="keywords" content="STL">
 <meta property="og:type" content="article">
-<meta property="og:title" content="键盘">
-<meta property="og:url" content="http://yoursite.com/2018/10/19/2/index.html">
+<meta property="og:title" content="tree">
+<meta property="og:url" content="http://yoursite.com/2018/10/20/tree/index.html">
 <meta property="og:site_name" content="Another Limit">
-<meta property="og:description" content="Code Level: ※ Thinking Level: ※">
+<meta property="og:description" content="Code Level:※※ Thinking Level:※">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-10-20T02:55:08.627Z">
+<meta property="og:updated_time" content="2018-10-20T06:31:37.988Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="键盘">
-<meta name="twitter:description" content="Code Level: ※ Thinking Level: ※">
+<meta name="twitter:title" content="tree">
+<meta name="twitter:description" content="Code Level:※※ Thinking Level:※">
 
 
 
@@ -120,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/10/19/2/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/10/20/tree/"/>
 
 
 
 
 
-  <title>键盘 | Another Limit</title>
+  <title>tree | Another Limit</title>
   
 
 
@@ -243,7 +243,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/10/19/2/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/10/20/tree/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="WannaBTL">
@@ -260,7 +260,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">键盘</h1>
+          <h1 class="post-title" itemprop="name headline">tree</h1>
         
 
         <div class="post-meta">
@@ -273,8 +273,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-10-19T07:46:06+08:00">
-                2018-10-19
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-10-20T11:23:10+08:00">
+                2018-10-20
               </time>
             
 
@@ -312,26 +312,13 @@
 
       
         <ul>
-<li>Code Level: ※</li>
-<li>Thinking Level: ※<a id="more"></a>
+<li>Code Level:※※</li>
+<li>Thinking Level:※<a id="more"></a>
 </li>
 </ul>
-<h1 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h1><p>现有长度为x的序列，以如下操作:</p>
-<blockquote>
-<ol>
-<li>加 1（消耗 1）</li>
-<li>全选（消耗 2）</li>
-<li>复制（消耗 2）</li>
-<li>粘贴（消耗 2）</li>
-<li>删除（消耗 1） （删除一个或所选择）</li>
-</ol>
-</blockquote>
-<p>求最小消耗使序列变为n</p>
-<h1 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h1><pre><code>发现是一个以长度为节点的图，跑最短路即可
-</code></pre><h1 id="Details"><a href="#Details" class="headerlink" title="Details"></a>Details</h1><ul>
-<li>删除操作只存在两种，删1或删所有，所以所有大于N的状态可以直接通过现状态推导</li>
-</ul>
-<h1 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h1><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;queue&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> Nn=<span class="number">2</span>*<span class="number">1e6</span>+<span class="number">5</span>;</span><br><span class="line"><span class="keyword">int</span> X,N,Dist[Nn],Vis[Nn]; <span class="built_in">queue</span>&lt;<span class="keyword">int</span>&gt;q;</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Alpha</span>&#123;</span></span><br><span class="line">    <span class="keyword">int</span> id,d;</span><br><span class="line">    <span class="keyword">friend</span> <span class="keyword">bool</span> <span class="keyword">operator</span>&lt;(Alpha a,Alpha b)&#123;</span><br><span class="line">        <span class="keyword">return</span> a.d&gt;b.d;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Bre</span><span class="params">(<span class="keyword">int</span> i,<span class="keyword">int</span> j,<span class="keyword">int</span> w)</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(Dist[i]&gt;Dist[j]+w)&#123;</span><br><span class="line">        Dist[i]=Dist[j]+w;</span><br><span class="line">        <span class="keyword">if</span>(!Vis[i]) q.push(i);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%d%d"</span>,&amp;X,&amp;N); <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;=N;i++) Dist[i]=<span class="number">0x3f3f3f3f</span>;</span><br><span class="line">    <span class="keyword">if</span>(X&gt;N)&#123; Dist[<span class="number">0</span>]=<span class="number">3</span>; q.push(<span class="number">0</span>); Vis[<span class="number">0</span>]=<span class="number">1</span>; Dist[N]=X-N;&#125;</span><br><span class="line">    <span class="keyword">else</span>&#123;Dist[X]=<span class="number">0</span>; Dist[N]=N-X; q.push(X); Vis[X]=<span class="number">1</span>;&#125;</span><br><span class="line">    <span class="keyword">while</span>(!q.empty())&#123;</span><br><span class="line">        <span class="keyword">int</span> now=q.front();q.pop();</span><br><span class="line">        <span class="keyword">if</span>(now&lt;N) Bre(now+<span class="number">1</span>,now,<span class="number">1</span>);</span><br><span class="line">        <span class="keyword">if</span>(now)&#123;</span><br><span class="line">            Bre(now<span class="number">-1</span>,now,<span class="number">1</span>);</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i*now&lt;=N;i++)</span><br><span class="line">            <span class="keyword">if</span>(now*(i+<span class="number">1</span>)&gt;N) Bre(N,now,<span class="number">4</span>+<span class="number">2</span>*i+now*(i+<span class="number">1</span>)-N);</span><br><span class="line">            <span class="keyword">else</span> Bre(now*(i+<span class="number">1</span>),now,i*<span class="number">2</span>+<span class="number">4</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        Vis[now]=<span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%d\n"</span>,Dist[N]);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h1><p>有n个盒子，每个盒子里可以装一个球，起初这些盒子里是没有球的，接下<br>来有m个操作，操作有2种类型，一种是放球，一种是拿球，放球的话，需要使得<br>这个放的球离最近的球距离最大，如果有多个符合条件的盒子，选择其编号最小<br>的盒子。拿球就是直接从某个盒子中将求拿出。求出每次放球放的盒子编号。</p>
+<h1 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h1><p>用set维护距离的最大值，每次取出就是合并序列，放入就是分割序列</p>
+<h1 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h1><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;set&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;queue&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> Nn=<span class="number">4000005</span>;</span><br><span class="line"><span class="keyword">int</span> N,M,Pos[Nn],L[Nn],R[Nn];</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Alpha</span>&#123;</span></span><br><span class="line">    <span class="keyword">int</span> l,r,len,pos;</span><br><span class="line">    <span class="keyword">friend</span> <span class="keyword">bool</span> <span class="keyword">operator</span>&lt;(Alpha a,Alpha b)&#123;</span><br><span class="line">        <span class="keyword">if</span>(a.len==b.len) <span class="keyword">return</span> a.pos&gt;b.pos;</span><br><span class="line">        <span class="keyword">return</span> a.len&lt;b.len;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="built_in">set</span>&lt;Alpha&gt;q; <span class="built_in">set</span>&lt;Alpha&gt;::iterator it;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Insert</span><span class="params">(<span class="keyword">int</span> x)</span></span>&#123;</span><br><span class="line">    it=q.end(); it--;</span><br><span class="line">    <span class="keyword">int</span> l=it-&gt;l,r=it-&gt;r,len=it-&gt;len,pos=it-&gt;pos; Pos[x]=pos; R[l]=pos; L[r]=pos; R[pos]=r; L[pos]=l; q.erase(it);</span><br><span class="line">    <span class="keyword">if</span>(pos-l&gt;<span class="number">1</span>) q.insert((Alpha)&#123;l,pos,(pos-l)/<span class="number">2</span>,(pos+l)/<span class="number">2</span>&#125;);</span><br><span class="line">    <span class="keyword">if</span>(r-pos&gt;<span class="number">1</span>)&#123;</span><br><span class="line">        <span class="keyword">if</span>(r==N+<span class="number">1</span>) q.insert((Alpha)&#123;pos,N+<span class="number">1</span>,N-pos,N&#125;);</span><br><span class="line">        <span class="keyword">else</span> q.insert((Alpha)&#123;pos,r,(r-pos)/<span class="number">2</span>,(r+pos)/<span class="number">2</span>&#125;);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%d\n"</span>,Pos[x]);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Delet</span><span class="params">(<span class="keyword">int</span> x)</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> now=Pos[x],l=L[now],r=R[now]; R[l]=r; L[r]=l;</span><br><span class="line">    <span class="keyword">if</span>(now-l&gt;<span class="number">1</span>)&#123;</span><br><span class="line">        <span class="keyword">if</span>(l==<span class="number">0</span>) q.erase((Alpha)&#123;l,now,now<span class="number">-1</span>,<span class="number">1</span>&#125;);</span><br><span class="line">        <span class="keyword">else</span> q.erase((Alpha)&#123;l,now,(now-l)/<span class="number">2</span>,(now+l)/<span class="number">2</span>&#125;);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(r-now&gt;<span class="number">1</span>)&#123;</span><br><span class="line">        <span class="keyword">if</span>(r==N+<span class="number">1</span>) q.erase((Alpha)&#123;now,N+<span class="number">1</span>,N-now,N&#125;);</span><br><span class="line">        <span class="keyword">else</span> q.erase((Alpha)&#123;now,r,(r-now)/<span class="number">2</span>,(r+now)/<span class="number">2</span>&#125;);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(l==<span class="number">0</span>) q.insert((Alpha)&#123;l,r,r<span class="number">-1</span>,<span class="number">1</span>&#125;);</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span>(r==N+<span class="number">1</span>) q.insert((Alpha)&#123;l,r,N-l,N&#125;);</span><br><span class="line">    <span class="keyword">else</span> q.insert((Alpha)&#123;l,r,(r-l)/<span class="number">2</span>,(r+l)/<span class="number">2</span>&#125;);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%d%d"</span>,&amp;N,&amp;M);  q.insert((Alpha)&#123;<span class="number">0</span>,N+<span class="number">1</span>,<span class="number">1</span>,<span class="number">1</span>&#125;);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>,x,y;i&lt;=M;i++)&#123;</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">"%d%d"</span>,&amp;x,&amp;y);</span><br><span class="line">        <span class="keyword">if</span>(x==<span class="number">1</span>) Insert(y);</span><br><span class="line">        <span class="keyword">else</span> Delet(y);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -349,7 +336,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/图论/" rel="tag"># 图论</a>
+            <a href="/tags/STL/" rel="tag"># STL</a>
           
         </div>
       
@@ -362,8 +349,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/10/18/1/" rel="next" title="序列">
-                <i class="fa fa-chevron-left"></i> 序列
+              <a href="/2018/10/20/约束/" rel="next" title="约束">
+                <i class="fa fa-chevron-left"></i> 约束
               </a>
             
           </div>
@@ -371,10 +358,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/10/20/3/" rel="prev" title="源泉">
-                源泉 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -497,7 +480,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Description"><span class="nav-number">1.</span> <span class="nav-text">Description</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Solution"><span class="nav-number">2.</span> <span class="nav-text">Solution</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Details"><span class="nav-number">3.</span> <span class="nav-text">Details</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Code"><span class="nav-number">4.</span> <span class="nav-text">Code</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Description"><span class="nav-number">1.</span> <span class="nav-text">Description</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Solution"><span class="nav-number">2.</span> <span class="nav-text">Solution</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Code"><span class="nav-number">3.</span> <span class="nav-text">Code</span></a></li></ol></div>
             
 
           </div>
@@ -704,26 +687,6 @@
   
 
   
-  
-    <script type="text/x-mathjax-config">
-      MathJax.Hub.Config({
-        tex2jax: {
-          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
-          processEscapes: true,
-          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
-        }
-      });
-    </script>
-
-    <script type="text/x-mathjax-config">
-      MathJax.Hub.Queue(function() {
-        var all = MathJax.Hub.getAllJax(), i;
-        for (i=0; i < all.length; i += 1) {
-          all[i].SourceElement().parentNode.className += ' has-jax';
-        }
-      });
-    </script>
-    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
   
 
 
