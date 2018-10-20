@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="Code Level: ※ Thinking Level: ※※">
+<meta name="description" content="Code Level: ※ Thinking Level: ※※※">
 <meta name="keywords" content="数">
 <meta property="og:type" content="article">
 <meta property="og:title" content="异或">
 <meta property="og:url" content="http://yoursite.com/2018/10/20/5/index.html">
 <meta property="og:site_name" content="Another Limit">
-<meta property="og:description" content="Code Level: ※ Thinking Level: ※※">
+<meta property="og:description" content="Code Level: ※ Thinking Level: ※※※">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-10-20T01:47:38.857Z">
+<meta property="og:updated_time" content="2018-10-20T02:03:15.948Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="异或">
-<meta name="twitter:description" content="Code Level: ※ Thinking Level: ※※">
+<meta name="twitter:description" content="Code Level: ※ Thinking Level: ※※※">
 
 
 
@@ -313,7 +313,7 @@
       
         <ul>
 <li>Code Level: ※</li>
-<li>Thinking Level: ※※<a id="more"></a>
+<li>Thinking Level: ※※※<a id="more"></a>
 </li>
 </ul>
 <h1 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h1><p>一棵树，根编号1，原始带权，到第i+1天变为第i天子树节点的异或和。<br>求 第x天 根编号 </p>
@@ -322,8 +322,8 @@
 <script type="math/tex; mode=display">d_{i,j}=C_{i+j-1}^{j-1}\ \ \ (隔板法)</script><p>而又因为贡献是异或和，所以只关心系数的奇偶性<br>即当且只当此时系数为奇时，此深度节点会对根节点造成贡献<br>即关心</p>
 <script type="math/tex; mode=display">(_m^n) mod \ 2==1</script><p>根据Lucas定理：</p>
 <script type="math/tex; mode=display">(_m^n) mod \ 2=(_{m\ mod\ 2}^{n\ mod\ 2})*(_{m/2}^{n/2})</script><p>而又</p>
-<script type="math/tex; mode=display">C(1,0)=C(1,1)=C(0,0)=1且C(0,1)不存在</script><p>可知条件满足的充分必要条件是：m|n==n<br>(m/2，n/2可以理解为它们整体二进制右移，则Lucas定理则是在比较它们的每一个二进制位)</p>
-<p>所以我们得到，当 n+m-1|n-1=n+m-1 深度m的点会在第n天造成贡献<br>即当 n-1&amp;m=0</p>
+<script type="math/tex; mode=display">C(1,0)=C(1,1)=C(0,0)=1且C(0,1)不存在</script><p>可知条件满足的充分必要条件是：n&amp;m==m<br>(m/2，n/2可以理解为它们整体二进制右移，则Lucas定理则是在比较它们的每一个二进制位)</p>
+<p>所以我们得到，当 n+m-1&amp;n-1=n-1 深度m的点会在第n天造成贡献<br>即当 n-1&amp;m=0</p>
 <p>而关注此式的取值范围，它很明显是通过不同深度是否贡献来得到不同取值<br>所以当</p>
 <script type="math/tex; mode=display">2^k>max_{deep}时，天数x的ans=天数x\ mod\ max_{deep}的ans</script><p>而n-1&amp;m=0的情况完全可以直接枚举n-1的满足条件的子集m去构成答案<br>则最后答案也就等于</p>
 <script type="math/tex; mode=display">ans[((n-1)\ mod \ 2^k\ \ xor\ (2^k-1))]</script><p>最后一步就是取</p>
@@ -367,6 +367,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/10/20/6/" rel="prev" title="小W与选座">
+                小W与选座 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -443,7 +447,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-count">9</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -456,7 +460,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-count">6</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
