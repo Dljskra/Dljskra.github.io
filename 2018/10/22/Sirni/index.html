@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="Another Limit">
 <meta property="og:description" content="Code Level: ※※ Thinking Level: ※※">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-10-22T13:38:32.553Z">
+<meta property="og:updated_time" content="2018-10-22T23:59:30.923Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Sirni">
 <meta name="twitter:description" content="Code Level: ※※ Thinking Level: ※※">
@@ -316,7 +316,13 @@
 <li>Thinking Level: ※※<a id="more"></a>
 </li>
 </ul>
-
+<h1 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h1><p>有 n 个点，每个点有个权值 p1, p2,…,pn。这些点之间两两有边，对于点 i, j，这两个点之间的边权为 </p>
+<script type="math/tex; mode=display">min(p_i\ mod\ p_j,p_j\ mod\ p_i)</script><p>问把这些点连通的最小代价和是多少，也就是问这个完全图的最小生成树的边权和。</p>
+<script type="math/tex; mode=display">1 ≤ n ≤ 10^5, pi ≤ 10^6</script><h1 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h1><p>对于生成图，一看数据n方过百万，就知道要用玄妙的方法来构成边去跑克鲁斯卡尔了</p>
+<p>观察边权的表达式，可以知道存在多余的权值相等的点是无意义的（连接耗费为零），所以可以先去重</p>
+<p>再一次观察发现对于mod k的答案，在每一个段（段长k）中是有序的。即</p>
+<script type="math/tex; mode=display">min_j=min(i\ mod\ k)\ (i=min( x\in [\ k*a\ ,\ k*(a+1)\ \ ))</script><p>所以根据此加边即可</p>
+<h1 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h1><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> nn=<span class="number">1e5</span>+<span class="number">5</span>;;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> mn=<span class="number">1e7</span>+<span class="number">5</span>;</span><br><span class="line"><span class="keyword">int</span> n,p[nn],d[nn],f[nn],mr[mn*<span class="number">2</span>],pos[<span class="number">2</span>*mn],tot=<span class="number">0</span>;<span class="keyword">bool</span> vis[nn];<span class="keyword">long</span> <span class="keyword">long</span> ans=<span class="number">0</span>;</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">dat</span>&#123;</span></span><br><span class="line">    <span class="keyword">int</span> from,to,cost;</span><br><span class="line">    <span class="keyword">friend</span> <span class="keyword">bool</span> <span class="keyword">operator</span>&lt;(dat a,dat b)&#123;</span><br><span class="line">        <span class="keyword">return</span> a.cost&lt;b.cost;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;e[nn*<span class="number">405</span>];</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">find</span><span class="params">(<span class="keyword">int</span> x)</span></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> x==f[x]?x:f[x]=find(f[x]);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> i,j,x,y,cnt=<span class="number">0</span>; <span class="keyword">long</span> <span class="keyword">long</span> ans=<span class="number">0</span>;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;n); <span class="keyword">for</span>(i=<span class="number">1</span>;i&lt;=n;i++) <span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;p[i]);</span><br><span class="line">    sort(p+<span class="number">1</span>,p+<span class="number">1</span>+n); n=unique(p+<span class="number">1</span>,p+<span class="number">1</span>+n)-p<span class="number">-1</span>;</span><br><span class="line">    <span class="keyword">for</span>(i=<span class="number">1</span>;i&lt;=n;i++) mr[p[i]]=p[i],pos[p[i]]=i;</span><br><span class="line">    <span class="keyword">for</span>(i=mn<span class="number">-2</span>;i&gt;<span class="number">0</span>;i--) <span class="keyword">if</span>(!mr[i]) mr[i]=mr[i+<span class="number">1</span>],pos[i]=pos[i+<span class="number">1</span>];</span><br><span class="line">    <span class="keyword">for</span>(i=<span class="number">1</span>;i&lt;n;i++)&#123;</span><br><span class="line">        e[++tot]=(dat)&#123;i,i+<span class="number">1</span>,p[i+<span class="number">1</span>]%p[i]&#125;;</span><br><span class="line">        <span class="keyword">for</span>(j=p[i]*<span class="number">2</span>;j&lt;mn;j+=p[i])&#123;</span><br><span class="line">            <span class="keyword">if</span>(!mr[j]) <span class="keyword">break</span>;</span><br><span class="line">            <span class="keyword">if</span>(mr[j]&gt;=j+p[i]) <span class="keyword">continue</span> ;</span><br><span class="line">            e[++tot]=(dat)&#123;i,pos[mr[j]],mr[j]%p[i]&#125;;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125; sort(e+<span class="number">1</span>,e+<span class="number">1</span>+tot);</span><br><span class="line">    <span class="keyword">for</span>(i=<span class="number">1</span>;i&lt;=n;i++) f[i]=i;</span><br><span class="line">    <span class="keyword">for</span>(i=<span class="number">1</span>;i&lt;=tot;i++)&#123;</span><br><span class="line">        x=find(e[i].from);y=find(e[i].to);</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">if</span>(x==y) <span class="keyword">continue</span> ;</span><br><span class="line">        f[x]=y; ans+=e[i].cost; cnt++;</span><br><span class="line">        <span class="keyword">if</span>(cnt==n<span class="number">-1</span>) <span class="keyword">break</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">cout</span>&lt;&lt;ans&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
       
     </div>
     
@@ -410,8 +416,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -462,6 +477,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Description"><span class="nav-number">1.</span> <span class="nav-text">Description</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Solution"><span class="nav-number">2.</span> <span class="nav-text">Solution</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Code"><span class="nav-number">3.</span> <span class="nav-text">Code</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
