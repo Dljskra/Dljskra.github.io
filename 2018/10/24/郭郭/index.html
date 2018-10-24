@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="贪心," />
+  <meta name="keywords" content="思维," />
 
 
 
@@ -80,16 +80,16 @@
 
 
 <meta name="description" content="Code Level: ※ Thinking Level: ※※">
-<meta name="keywords" content="贪心">
+<meta name="keywords" content="思维">
 <meta property="og:type" content="article">
-<meta property="og:title" content="小W与选座">
-<meta property="og:url" content="http://yoursite.com/2018/10/20/6/index.html">
+<meta property="og:title" content="锅锅">
+<meta property="og:url" content="http://yoursite.com/2018/10/24/郭郭/index.html">
 <meta property="og:site_name" content="Another Limit">
 <meta property="og:description" content="Code Level: ※ Thinking Level: ※※">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-10-20T02:55:02.418Z">
+<meta property="og:updated_time" content="2018-10-23T23:54:00.198Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="小W与选座">
+<meta name="twitter:title" content="锅锅">
 <meta name="twitter:description" content="Code Level: ※ Thinking Level: ※※">
 
 
@@ -120,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/10/20/6/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/10/24/郭郭/"/>
 
 
 
 
 
-  <title>小W与选座 | Another Limit</title>
+  <title>锅锅 | Another Limit</title>
   
 
 
@@ -243,7 +243,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/10/20/6/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/10/24/郭郭/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="WannaBTL">
@@ -260,7 +260,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">小W与选座</h1>
+          <h1 class="post-title" itemprop="name headline">锅锅</h1>
         
 
         <div class="post-meta">
@@ -273,8 +273,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-10-20T09:56:33+08:00">
-                2018-10-20
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-10-24T07:37:33+08:00">
+                2018-10-24
               </time>
             
 
@@ -316,14 +316,9 @@
 <li>Thinking Level: ※※<a id="more"></a>
 </li>
 </ul>
-<h1 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h1><p>有n个旅客。每个旅客从si上车，在ti下车。保证si&lt;ti。<br>现在这n个旅客按照随机的顺序分别在网上订票。现在有两种订票的方式。第一种是每个人都可以在订票的时候自己选择座位，选的座位要求在si到ti中都没人选过，第二种是系统在所有n个人订完票之后安排座位。每个人要求行程中不换座位，且每个座位在任意时刻最多只能分配给一个人。当然，高铁中的座位数必须满足在任意订票顺序的情况下，都能够满足所有人的订票需求。</p>
-<p>现在小W想知道，对于两种方案，他分别需要至少安排多少个座位。</p>
-<h1 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h1><ul>
-<li>op1：求一条线段与其相交线段数量的最大值</li>
-<li>op2：求一条线段与其包含线段数量的最大值</li>
-</ul>
-<h1 id="Details"><a href="#Details" class="headerlink" title="Details"></a>Details</h1><p>前缀和要加前缀</p>
-<h1 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h1><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> nn=<span class="number">200005</span>;</span><br><span class="line"><span class="keyword">int</span> n,a[nn],rot,las=<span class="number">0</span>,ans1=<span class="number">0</span>,sz=<span class="number">0</span>,de[nn],ans2=<span class="number">0</span>;</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">tra</span>&#123;</span></span><br><span class="line">    <span class="keyword">int</span> s,t;</span><br><span class="line">    <span class="keyword">friend</span> <span class="keyword">bool</span> <span class="keyword">operator</span>&lt;(tra a,tra b)&#123;</span><br><span class="line">        <span class="keyword">return</span> a.s&lt;b.s;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;e[nn];</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">per</span>&#123;</span></span><br><span class="line">    <span class="keyword">int</span> id,d; <span class="keyword">friend</span> <span class="keyword">bool</span> <span class="keyword">operator</span>&lt;(per a,per b)&#123;</span><br><span class="line">        <span class="keyword">return</span> a.d&gt;b.d;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;; priority_queue&lt;per&gt;q;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">r_i</span><span class="params">(<span class="keyword">int</span> &amp;x)</span></span>&#123;</span><br><span class="line">    x=<span class="number">0</span>; <span class="keyword">char</span> c=getchar();</span><br><span class="line">    <span class="keyword">for</span>(;!<span class="built_in">isdigit</span>(c);c=getchar());</span><br><span class="line">    <span class="keyword">for</span>(;<span class="built_in">isdigit</span>(c);c=getchar()) x=x*<span class="number">10</span>-<span class="string">'0'</span>+c;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> i;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;n); <span class="keyword">for</span>(i=<span class="number">1</span>;i&lt;=n;i++)&#123;</span><br><span class="line">        r_i(e[i].s),r_i(e[i].t); las=max(las,e[i].t);</span><br><span class="line">    &#125; sort(e+<span class="number">1</span>,e+<span class="number">1</span>+n); q.push((per)&#123;<span class="number">1</span>,e[<span class="number">1</span>].t&#125;); </span><br><span class="line">    per he;</span><br><span class="line">    <span class="keyword">for</span>(i=<span class="number">2</span>;i&lt;=n;i++)&#123;</span><br><span class="line">        de[i]=de[i<span class="number">-1</span>];</span><br><span class="line">        <span class="keyword">while</span>(!q.empty())&#123;</span><br><span class="line">            he=q.top(); <span class="keyword">if</span>(he.d&gt;e[i].s) <span class="keyword">break</span> ;</span><br><span class="line">            ans1=max(ans1,i-de[he.id]<span class="number">-1</span>); de[i]++; q.pop(); </span><br><span class="line">        &#125;</span><br><span class="line">        q.push((per)&#123;i,e[i].t&#125;);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">while</span>(!q.empty())&#123; he=q.top(); q.pop(); ans1=max(ans1,n-de[he.id]); &#125;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%d "</span>,ans1);</span><br><span class="line">    q.push((per)&#123;<span class="number">1</span>,e[<span class="number">1</span>].t&#125;); sz=<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span>(i=<span class="number">2</span>;i&lt;=n;i++)&#123;</span><br><span class="line">        <span class="keyword">while</span>(!q.empty())&#123;</span><br><span class="line">            he=q.top(); <span class="keyword">if</span>(he.d&gt;e[i].s) <span class="keyword">break</span> ;</span><br><span class="line">            q.pop(); sz--;</span><br><span class="line">        &#125;</span><br><span class="line">        sz++; ans2=max(sz,ans2); q.push((per)&#123;i,e[i].t&#125;);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%d "</span>,ans2);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h1><p>还有10h就要考试了，蔡老师发现题没有造完，还要x个题需要写标程, y个题需要造数据。蔡老师只能甩锅给网友们，帮他一起造题了。<br>一共有n个网友，蔡老师发现n恰好是x+y的约数，所以可以把这些锅均匀地分给网友们，也就是每个人接到(x+y)/n个锅。<br>对于一个第i个网友，写一个标程需要ai的时间，造一个数据需要bi的时间。<br>为了防止网友们造反，蔡老师希望大家需要花的时间都差不多，也就是花时间最多的人和最少的人的差尽量小。</p>
+<script type="math/tex; mode=display">x,y<=10^5,1<=a_i,b_i<10^9</script><h1 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h1><p>要使差值最小，最后所选的一定是一个区间，我们的目的便成了如何去构造一个<br>满足条件的区间<br>为了观察区间性质，我们把每个人能给出的情况（（x+y）/n种）全部拿来排序，则最终我们选出一个连续区间，答案就是末端减首端<br>考虑区间的合法性，约束条件是写标程的人总数要达到x。我们注意在统计连续区间的时候，一个区间内很可能会包含同一个人的不同贡献（对写标程人数），而注意，第二次计入同一个人的贡献时拿来更新此人在计算最终答案时对写标程和造数据拥有的更多选择，即，它使写标程的人数成了一个范围。<br>只要这个范围包围了x，且一共选了n个人，即是一个可行解</p>
+<h1 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h1><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> nn=<span class="number">10000005</span>;</span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> ll;</span><br><span class="line"><span class="keyword">int</span> n,x,y,k,tot=<span class="number">0</span>,rev[nn],aa[nn],bb[nn]; ll ans=<span class="number">0x3f3f3f3f3f3f3f3f</span>;</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">dat</span>&#123;</span></span><br><span class="line">    <span class="keyword">int</span> id,k; ll ans;</span><br><span class="line">    <span class="keyword">friend</span> <span class="keyword">bool</span> <span class="keyword">operator</span>&lt;(dat a,dat b)&#123;</span><br><span class="line">        <span class="keyword">return</span> a.ans==b.ans?a.k&lt;b.k:a.ans&lt;b.ans;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;e[nn];</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> all=<span class="number">0</span>,i,j,a,b,t;<span class="built_in">scanf</span>(<span class="string">"%d%d%d"</span>,&amp;x,&amp;y,&amp;n); k=(x+y)/n; </span><br><span class="line">    <span class="keyword">for</span>(i=<span class="number">1</span>;i&lt;=n;i++)&#123;</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">"%d%d"</span>,&amp;a,&amp;b);  aa[i]=a;bb[i]=b;</span><br><span class="line">        <span class="keyword">for</span>(t=<span class="number">0</span>;t&lt;=k;t++)&#123;</span><br><span class="line">            e[++tot]=(dat)&#123;i,t,<span class="number">1l</span>l*a*t+<span class="number">1l</span>l*b*(k-t)&#125;;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    sort(e+<span class="number">1</span>,e+<span class="number">1</span>+tot); <span class="keyword">int</span> suml=<span class="number">0</span>,sumr=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(i=<span class="number">1</span>,j=<span class="number">1</span>;i&lt;=tot;i++)&#123;</span><br><span class="line">        <span class="keyword">while</span>(j&lt;=tot&amp;&amp;!(all==n&amp;&amp;suml&lt;=x&amp;&amp;sumr&gt;=x))&#123;</span><br><span class="line">            a=e[j].id;</span><br><span class="line">            <span class="keyword">if</span>(!rev[a]) all++,suml+=e[j].k,sumr+=e[j].k;</span><br><span class="line">            <span class="keyword">else</span> &#123;</span><br><span class="line">                <span class="keyword">if</span>(aa[a]&lt;=bb[a]) suml--;</span><br><span class="line">                <span class="keyword">if</span>(aa[a]&gt;=bb[a]) sumr++;</span><br><span class="line">            &#125;</span><br><span class="line">            rev[a]++;j++;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(all!=n) <span class="keyword">break</span>;</span><br><span class="line">        ans=min(ans,e[j<span class="number">-1</span>].ans-e[i].ans); a=e[i].id;</span><br><span class="line">        <span class="keyword">if</span>(rev[a]==<span class="number">1</span>) suml-=e[i].k,sumr-=e[i].k,all--;</span><br><span class="line">        <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="keyword">if</span>(aa[a]&lt;=bb[a]) suml++;</span><br><span class="line">            <span class="keyword">if</span>(aa[a]&gt;=bb[a]) sumr--;</span><br><span class="line">        &#125;</span><br><span class="line">        rev[a]--;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">cout</span>&lt;&lt;ans&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
       
     </div>
     
@@ -340,7 +335,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/贪心/" rel="tag"># 贪心</a>
+            <a href="/tags/思维/" rel="tag"># 思维</a>
           
         </div>
       
@@ -353,8 +348,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/10/20/5/" rel="next" title="异或">
-                <i class="fa fa-chevron-left"></i> 异或
+              <a href="/2018/10/24/鸽鸽/" rel="next" title="鸽鸽">
+                <i class="fa fa-chevron-left"></i> 鸽鸽
               </a>
             
           </div>
@@ -362,10 +357,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/10/20/约束/" rel="prev" title="约束">
-                约束 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -488,7 +479,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Description"><span class="nav-number">1.</span> <span class="nav-text">Description</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Solution"><span class="nav-number">2.</span> <span class="nav-text">Solution</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Details"><span class="nav-number">3.</span> <span class="nav-text">Details</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Code"><span class="nav-number">4.</span> <span class="nav-text">Code</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Description"><span class="nav-number">1.</span> <span class="nav-text">Description</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Solution"><span class="nav-number">2.</span> <span class="nav-text">Solution</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Code"><span class="nav-number">3.</span> <span class="nav-text">Code</span></a></li></ol></div>
             
 
           </div>
@@ -695,26 +686,6 @@
   
 
   
-  
-    <script type="text/x-mathjax-config">
-      MathJax.Hub.Config({
-        tex2jax: {
-          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
-          processEscapes: true,
-          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
-        }
-      });
-    </script>
-
-    <script type="text/x-mathjax-config">
-      MathJax.Hub.Queue(function() {
-        var all = MathJax.Hub.getAllJax(), i;
-        for (i=0; i < all.length; i += 1) {
-          all[i].SourceElement().parentNode.className += ' has-jax';
-        }
-      });
-    </script>
-    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
   
 
 
