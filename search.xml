@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search>
+  <entry>
+    <title><![CDATA[模仿游戏]]></title>
+    <url>%2F2018%2F10%2F25%2F%E6%A8%A1%E4%BB%BF%E6%B8%B8%E6%88%8F%2F</url>
+    <content type="text"><![CDATA[Code Level: ※ Thinking Level: ※※ DescriptionYJC最近看了《模仿游戏》。他对里面图灵破解ENIGMA的过程产生了兴趣，决定自己模拟一下这个过程。现在YJC正在破解一个2个转子的弱化版ENIGMA（没有反射器和连接板），他已经得到了明文和密文，他希望你能帮他破解出转子的布线方式。不知道ENIGMA的题目解释：初始时有两个大小为m的数组a和b，分别是0∼m−1的一个排列。进行n次操作，每一次操作在0∼m−1之间选一个数x，求出结果y=b[a[x]]，把x和y写下来。之后，a数组向前循环移动一次，即(a[0],a[1],…,a[m−2],a[m−1])变成(a[1],a[2],…,a[m−1],a[0]).当a数组变回初始状态时，b数组向前循环移动一次。现在已知所有的x和y，求一组符合条件的a和b的初值。 m^2]]></content>
+      <tags>
+        <tag>并查集</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[彩虹糖]]></title>
+    <url>%2F2018%2F10%2F24%2F%E5%BD%A9%E8%99%B9%E7%B3%96%2F</url>
+    <content type="text"><![CDATA[Code Level: ※ Thinking Level: ※※ Description两人分别持有两个操作序列A和B（长tota和totb），其中无相同元素（元素属于1~m）；和一长为n的待操作序列S两人轮流操作：选择S中一元素x，x须属于自己操作序列，可将x分为y和x-y。（0&lt;y&lt;x）无法操作的人输先手若获胜输出Pomegranate，否则输出Orange Solution不同于一般的平等博弈，此题先手后手的选择域是不同的因此我们引入f(x)来计入x能造成的贡献，即能多幸存几回合 Code123456789101112131415161718192021222324#include&lt;bits/stdc++.h&gt;using namespace std;const int nn=1000005;const int mn=10005;int n,m,f[mn],tota,totb,a[mn],b[mn];int main()&#123; scanf("%d%d",&amp;n,&amp;m); int i,j,x; scanf("%d",&amp;tota); for(i=1;i&lt;=tota;i++) scanf("%d",&amp;x),a[x]=1; scanf("%d",&amp;totb); for(i=1;i&lt;=totb;i++) scanf("%d",&amp;x),b[x]=1; f[1]=0; for(i=2;i&lt;=m;i++)&#123; f[i]=0; if(a[i]) for(j=1;j*2&lt;=i;j++) f[i]=max(f[i],f[j]+f[i-j]+1); if(b[i]) for(j=1;j*2&lt;=i;j++) f[i]=min(f[i],f[j]+f[i-j]-1); &#125; for(i=1;i&lt;=n;i++) scanf("%d",&amp;x),f[0]+=f[x]; if(f[0]&gt;0) printf("Pomegranate\n"); else printf("Orange\n"); return 0;&#125;]]></content>
+      <tags>
+        <tag>博弈论</tag>
+        <tag>递推</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[锅锅]]></title>
+    <url>%2F2018%2F10%2F24%2F%E9%83%AD%E9%83%AD%2F</url>
+    <content type="text"><![CDATA[Code Level: ※ Thinking Level: ※※ Description还有10h就要考试了，蔡老师发现题没有造完，还要x个题需要写标程, y个题需要造数据。蔡老师只能甩锅给网友们，帮他一起造题了。一共有n个网友，蔡老师发现n恰好是x+y的约数，所以可以把这些锅均匀地分给网友们，也就是每个人接到(x+y)/n个锅。对于一个第i个网友，写一个标程需要ai的时间，造一个数据需要bi的时间。为了防止网友们造反，蔡老师希望大家需要花的时间都差不多，也就是花时间最多的人和最少的人的差尽量小。 x,y]]></content>
+      <tags>
+        <tag>思维</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[鸽鸽]]></title>
+    <url>%2F2018%2F10%2F24%2F%E9%B8%BD%E9%B8%BD%2F</url>
+    <content type="text"><![CDATA[Code Level: ※※ Thinking Level: ※※ Description很不幸，蔡老师最后还是鸽了。愤怒的网友们冲进了蔡老师的家里，蔡老师不得不向网友们道歉。n个网友的愤怒值为f1,f2,…,fn当蔡老师向第i个网友道j次歉，第i网友的愤怒值会变成⌊fi/2^j⌋。蔡老师希望一共道歉k次使得网友们的愤怒值之和最小。蔡老师希望你能回答，对于[l,r]这一段网友fl,fl+1,…,fr，道歉一共k次，这些网友们的愤怒值之和最小是多少。 Solutionk次道歉贪心地想一定是要道贡献最大的k次歉的，所以可以对所有fi对于道不同的歉构建主席树，查询前k大的贡献就可以了而一个针对时间和空间的优化是，我们把值域分块，算出道歉i次在不同值域中的贡献，我们便可以优化从查询k变成查询k剔除了包含块的p，而进入主席树的次数也因此减少了 Code123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566#include&lt;bits/stdc++.h&gt;using namespace std;typedef long long ll;const int nn=100005;const int inf=5e8+5;int n,q,a[nn];struct dat&#123; int l,r,k;ll ans;&#125;e[nn*5];ll aa[35][nn],sum[35][nn],ned[35][nn],ss[nn];vector&lt;int&gt;g[35];ll val[nn*50],sz[nn*50];int tot,rt[nn],tr[nn*50][2];void inse(int &amp;x,int y,int l,int r,int p)&#123; x=++tot; sz[x]=sz[y]+1; val[x]=val[y]+p; tr[x][0]=tr[y][0]; tr[x][1]=tr[y][1]; if(l+1==r) return ; int mid=l+r&gt;&gt;1; if(mid&gt;p) inse(tr[x][0],tr[y][0],l,mid,p); else inse(tr[x][1],tr[y][1],mid,r,p);&#125;ll qurt(int x,int y,int l,int r,int k)&#123; if(sz[x]-sz[y]&lt;=k) return val[x]-val[y]; if(l+1==r) return 1ll*l*k; int mid=l+r&gt;&gt;1,rs=sz[tr[x][1]]-sz[tr[y][1]]; if(rs&gt;=k) return qurt(tr[x][1],tr[y][1],mid,r,k); else return val[tr[x][1]]-val[tr[y][1]]+qurt(tr[x][0],tr[y][0],l,mid,k-rs);&#125;void cle()&#123; int i; for(i=1;i&lt;=1;i++) tr[i][0]=tr[i][1]=val[i]=sz[i]=0; tot=0;&#125;int main()&#123; int i,j,t; scanf("%d%d",&amp;n,&amp;q); for(i=1;i&lt;=n;i++)&#123; scanf("%d",&amp;a[i]); t=a[i]; ss[i]=ss[i-1]+a[i]; for(j=31;j&gt;=0;j--)&#123; if(a[i]&gt;&gt;j)&#123; aa[j][i]=sum[j][i]=t-t/2; ned[j][i]=1; t&gt;&gt;=1; &#125; sum[j][i]+=sum[j][i-1]; ned[j][i]+=ned[j][i-1]; &#125; &#125; for(i=1;i&lt;=q;i++)&#123; scanf("%d%d%d",&amp;e[i].l,&amp;e[i].r,&amp;e[i].k); e[i].ans=ss[e[i].r]-ss[e[i].l-1]; for(j=31;j&gt;=0;j--)&#123; t=ned[j][e[i].r]-ned[j][e[i].l-1]; if(t&gt;e[i].k) break ; e[i].k-=t; e[i].ans-=sum[j][e[i].r]-sum[j][e[i].l-1];//printf("%d %d %d&lt;\n",e[i].ans,e[i].k,sum[j][e[i].r]-sum[j][e[i].l-1]); &#125; if(j&gt;=0&amp;&amp;e[i].k&gt;0) g[j].push_back(i); &#125; for(j=31;j&gt;=0;j--)if(g[j].size())&#123; cle(); for(i=1;i&lt;=n;i++) inse(rt[i],rt[i-1],1,inf,aa[j][i]); for(i=0;i&lt;g[j].size();i++) e[g[j][i]].ans-=qurt(rt[e[g[j][i]].r],rt[e[g[j][i]].l-1],1,inf,e[g[j][i]].k); &#125; for(i=1;i&lt;=q;i++) printf("%lld\n",e[i].ans); return 0;&#125;]]></content>
+      <tags>
+        <tag>主席树</tag>
+        <tag>分块</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[翻转]]></title>
+    <url>%2F2018%2F10%2F24%2F%E7%BF%BB%E8%BD%AC%2F</url>
+    <content type="text"><![CDATA[Code Level: ※ Thinking Level: ※※ Description两个长为n的01串A和B进行3种操作： A循环左移 B循环右移 使一个Bi=1的i所对应的ai值异或1以最小操作使A变成B 1]]></content>
+      <tags>
+        <tag>STL</tag>
+        <tag>字符串</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Sirni]]></title>
+    <url>%2F2018%2F10%2F22%2FSirni%2F</url>
+    <content type="text"><![CDATA[Code Level: ※※ Thinking Level: ※※ Description有 n 个点，每个点有个权值 p1, p2,…,pn。这些点之间两两有边，对于点 i, j，这两个点之间的边权为 min(p_i\ mod\ p_j,p_j\ mod\ p_i)问把这些点连通的最小代价和是多少，也就是问这个完全图的最小生成树的边权和。 1 ≤ n ≤ 10^5, pi ≤ 10^6Solution对于生成图，一看数据n方过百万，就知道要用玄妙的方法来构成边去跑克鲁斯卡尔了 观察边权的表达式，可以知道存在多余的权值相等的点是无意义的（连接耗费为零），所以可以先去重 再一次观察发现对于mod k的答案，在每一个段（段长k）中是有序的。即 min_j=min(i\ mod\ k)\ (i=min( x\in [\ k*a\ ,\ k*(a+1)\ \ ))所以根据此加边即可 Code123456789101112131415161718192021222324252627282930313233343536373839#include&lt;bits/stdc++.h&gt;using namespace std;const int nn=1e5+5;;const int mn=1e7+5;int n,p[nn],d[nn],f[nn],mr[mn*2],pos[2*mn],tot=0;bool vis[nn];long long ans=0;struct dat&#123; int from,to,cost; friend bool operator&lt;(dat a,dat b)&#123; return a.cost&lt;b.cost; &#125;&#125;e[nn*405];int find(int x)&#123; return x==f[x]?x:f[x]=find(f[x]);&#125;int main()&#123; int i,j,x,y,cnt=0; long long ans=0; scanf("%d",&amp;n); for(i=1;i&lt;=n;i++) scanf("%d",&amp;p[i]); sort(p+1,p+1+n); n=unique(p+1,p+1+n)-p-1; for(i=1;i&lt;=n;i++) mr[p[i]]=p[i],pos[p[i]]=i; for(i=mn-2;i&gt;0;i--) if(!mr[i]) mr[i]=mr[i+1],pos[i]=pos[i+1]; for(i=1;i&lt;n;i++)&#123; e[++tot]=(dat)&#123;i,i+1,p[i+1]%p[i]&#125;; for(j=p[i]*2;j&lt;mn;j+=p[i])&#123; if(!mr[j]) break; if(mr[j]&gt;=j+p[i]) continue ; e[++tot]=(dat)&#123;i,pos[mr[j]],mr[j]%p[i]&#125;; &#125; &#125; sort(e+1,e+1+tot); for(i=1;i&lt;=n;i++) f[i]=i; for(i=1;i&lt;=tot;i++)&#123; x=find(e[i].from);y=find(e[i].to); if(x==y) continue ; f[x]=y; ans+=e[i].cost; cnt++; if(cnt==n-1) break; &#125; cout&lt;&lt;ans&lt;&lt;endl; return 0;&#125;]]></content>
+      <tags>
+        <tag>图</tag>
+        <tag>最小生成树</tag>
+        <tag>模</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[小w与染色]]></title>
+    <url>%2F2018%2F10%2F20%2F%E5%B0%8Fw%E4%B8%8E%E6%9F%93%E8%89%B2%2F</url>
+    <content type="text"><![CDATA[Code Level: ※ Thinking Level: ※※ Description小W的是开染坊的。现在小W的想要把 n 块布染色。这 n 块布每一块都有一个长度 li。最初这些布都是白色的。由于一些原因，小W进行染色的方式很奇怪。首先，他将这 n 块布任意排成一排。然后每次选择一种颜色 c 和一个参数 l，然后把所有颜色 c 的布块中前 l 块染成和剩下的分别染成两种不同从未出现过的颜色。很明显每次染色都需要把所有颜色为 c 的布块重新染色。小W需要把这 n 块布全部染成互不相同的颜色，他想要最小化他染色的总布块长度。 Solution倒过来想就是石子归并 Code12345678#include&lt;bits/stdc++.h&gt;using namespace std;typedef long long ll;int N; priority_queue&lt;ll,vector&lt;ll&gt;,greater&lt;ll&gt; &gt;Q; ll A=0,S=0;int main()&#123; int i,x; scanf("%d",&amp;N); for(i=1;i&lt;=N;i++) scanf("%d",&amp;x),Q.push(x); for(i=1;i&lt;N;i++)&#123;S=Q.top();Q.pop();S+=Q.top();Q.pop();Q.push(S);A+=S;&#125; cout&lt;&lt;A&lt;&lt;endl; return 0;&#125;]]></content>
+      <tags>
+        <tag>贪心</tag>
+        <tag>逆推</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[小w与面试]]></title>
+    <url>%2F2018%2F10%2F20%2F%E5%B0%8Fw%E4%B8%8E%E9%9D%A2%E8%AF%95%2F</url>
+    <content type="text"><![CDATA[Code Level: ※ Thinking Level: ※※ Description给定一个长度为 n 的序列 a，求 \sum_{ia_j}{a_i\ xor\ a_j}Solution按位计算贡献当前值ai能对答案造成的贡献为其每一位能造成的贡献之和 若此位为0，则贡献即为ai之前此位为1的值 若此位为1，则贡献即为ai之前此位为0的值 用树状数组来维护 Code1234567891011121314151617#include&lt;bits/stdc++.h&gt;using namespace std;typedef long long ll;const int Mx=1e5+5;int N,A[Mx];ll Ans=0,Tr[22][2][Mx];void D(int j,int p,int x)&#123;for(int i=x;i&lt;Mx;i+=i&amp;-i)Tr[j][p][i]++;&#125;ll S(int j,int p,int x)&#123;ll s=0;for(int i=x;i;i-=i&amp;-i)s+=Tr[j][p][i];return s;&#125;int main()&#123; scanf("%d",&amp;N); for(int i=1;i&lt;=N;i++) scanf("%d",&amp;A[i]); for(int i=N;i&gt;0;i--) for(int j=0;j&lt;=20;j++) if((1&lt;&lt;j)&amp;A[i]) Ans+=(1&lt;&lt;j)*S(j,0,A[i]-1),D(j,1,A[i]); else Ans+=(1&lt;&lt;j)*S(j,1,A[i]-1),D(j,0,A[i]); cout&lt;&lt;Ans&lt;&lt;endl; return 0;&#125;]]></content>
+      <tags>
+        <tag>贪心</tag>
+        <tag>二进制</tag>
+        <tag>树状数组</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[小w与炒股]]></title>
+    <url>%2F2018%2F10%2F20%2F%E5%B0%8Fw%E4%B8%8E%E7%82%92%E8%82%A1%2F</url>
+    <content type="text"><![CDATA[Code Level: ※ Thinking Level: ※ Description小W卖酒小赚了一笔，决定拿着这笔钱去炒股。他预测了某支股票后n天的价格，其中第i天股价为pi，他打算利用这个赚钱。由于他实在太懒了，每天他至多只会交易1股（也就是说，他每天可以买进一股，卖出一股，或者什么都不做）。蒟蒻最开始不拥有任何股票，他希望n天后同样不拥有任何股票，并且赚最多的钱。他希望你帮他计算最多能赚多少钱。 Solution可以用中转站思想对于每一站i，我们计入卖它的贡献（先计入i的值来防止负贡献，往下看），而当后面有情况j使它更优时，其优化方案也即是 ans=ans+p_k-p_i+p_j-p_k=ans+p_j-p_i (令i的票从k买来的)可见，当i能两次被取出算贡献：在i买和在i卖得优化（前面在计算i之前先计入i得值就是这个原理） Code123456789101112131415#include&lt;queue&gt;#include&lt;cstdio&gt;#include&lt;cstring&gt;#include&lt;iostream&gt;#include&lt;algorithm&gt;using namespace std;typedef long long ll;const int Nn=1e6+5;int N;ll Ans=0;priority_queue&lt;ll&gt;q;int main()&#123; scanf("%d",&amp;N); for(int x,i=1;i&lt;=N;i++)&#123; scanf("%d",&amp;x); q.push(-x); q.push(-x); Ans+=x+q.top(); q.pop(); &#125; cout&lt;&lt;Ans; return 0;&#125;]]></content>
+      <tags>
+        <tag>贪心</tag>
+        <tag>特殊思想</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Lucas定理]]></title>
+    <url>%2F2018%2F10%2F20%2FProofofLucas%2F</url>
+    <content type="text"><![CDATA[Code Level: 无 Thingking Level: ※ Description：\binom{n}{m} \equiv \binom{\ {\lfloor {\frac {n}{p}\ } \rfloor}\ }{\ {\lfloor {\frac{m}{p}\ } \rfloor}\ }*\binom{n\mod p}{m\mod p} \pmod{p}Proof:费马小定理可得： (1+x)^n\equiv 1+x\equiv 1+x^n \pmod{p}(1+x)^n=(1+x)^{\lfloor \frac{n}{p} \rfloor} *(1+x)^{n\mod p}观察它们 x^m的系数\binom{n}{m}=\binom{\lfloor \frac{n}{p} \rfloor}{i}*\binom{n\mod p}{j}(i+j=m)则一定存在i，j使： i=\lfloor \frac{m}{p} \rfloor\ ,\ j=m \mod p得证 Delta将上述Lucas定理看作递归的化可得： \binom{n}{m}\equiv \prod_{i=1}^{i]]></content>
+      <tags>
+        <tag>数论</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[tree]]></title>
+    <url>%2F2018%2F10%2F20%2Ftree%2F</url>
+    <content type="text"><![CDATA[Code Level:※※ Thinking Level:※ Description有n个盒子，每个盒子里可以装一个球，起初这些盒子里是没有球的，接下来有m个操作，操作有2种类型，一种是放球，一种是拿球，放球的话，需要使得这个放的球离最近的球距离最大，如果有多个符合条件的盒子，选择其编号最小的盒子。拿球就是直接从某个盒子中将求拿出。求出每次放球放的盒子编号。 Solution用set维护距离的最大值，每次取出就是合并序列，放入就是分割序列 Code1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950#include&lt;set&gt;#include&lt;queue&gt;#include&lt;cstdio&gt;#include&lt;cstring&gt;#include&lt;iostream&gt;#include&lt;algorithm&gt;using namespace std;const int Nn=4000005;int N,M,Pos[Nn],L[Nn],R[Nn];struct Alpha&#123; int l,r,len,pos; friend bool operator&lt;(Alpha a,Alpha b)&#123; if(a.len==b.len) return a.pos&gt;b.pos; return a.len&lt;b.len; &#125;&#125;;set&lt;Alpha&gt;q; set&lt;Alpha&gt;::iterator it;void Insert(int x)&#123; it=q.end(); it--; int l=it-&gt;l,r=it-&gt;r,len=it-&gt;len,pos=it-&gt;pos; Pos[x]=pos; R[l]=pos; L[r]=pos; R[pos]=r; L[pos]=l; q.erase(it); if(pos-l&gt;1) q.insert((Alpha)&#123;l,pos,(pos-l)/2,(pos+l)/2&#125;); if(r-pos&gt;1)&#123; if(r==N+1) q.insert((Alpha)&#123;pos,N+1,N-pos,N&#125;); else q.insert((Alpha)&#123;pos,r,(r-pos)/2,(r+pos)/2&#125;); &#125; printf("%d\n",Pos[x]);&#125;void Delet(int x)&#123; int now=Pos[x],l=L[now],r=R[now]; R[l]=r; L[r]=l; if(now-l&gt;1)&#123; if(l==0) q.erase((Alpha)&#123;l,now,now-1,1&#125;); else q.erase((Alpha)&#123;l,now,(now-l)/2,(now+l)/2&#125;); &#125; if(r-now&gt;1)&#123; if(r==N+1) q.erase((Alpha)&#123;now,N+1,N-now,N&#125;); else q.erase((Alpha)&#123;now,r,(r-now)/2,(r+now)/2&#125;); &#125; if(l==0) q.insert((Alpha)&#123;l,r,r-1,1&#125;); else if(r==N+1) q.insert((Alpha)&#123;l,r,N-l,N&#125;); else q.insert((Alpha)&#123;l,r,(r-l)/2,(r+l)/2&#125;);&#125;int main()&#123; scanf("%d%d",&amp;N,&amp;M); q.insert((Alpha)&#123;0,N+1,1,1&#125;); for(int i=1,x,y;i&lt;=M;i++)&#123; scanf("%d%d",&amp;x,&amp;y); if(x==1) Insert(y); else Delet(y); &#125; return 0;&#125;]]></content>
+      <tags>
+        <tag>STL</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[约束]]></title>
+    <url>%2F2018%2F10%2F20%2F%E7%BA%A6%E6%9D%9F%2F</url>
+    <content type="text"><![CDATA[Code Level: ※ Thinking Level: ※※ Description现有 n 个点，n 条有向边。要求将 n 个点分入两个集合 A，B，使得对于集合A 中的每一个点 x，存在一个集合 B 中的点 y，从 y 到 x 有一条有向边。问集合A 最多能包含几个点。 Input第一行一个整数 n，表示总共有 n 个点。接下来一行 n 个整数，表示一个序列 a，a[i]代表存在一条从第 i 个点到第a[i]个点的有向边 Solution 入度为零的点一定在B集合 放入A集合可以视作删边，则会产生新的入度为零的点 观察输入，保证了点出度为1，即一个能放入A集合的点放入A的贡献一定不比放入B少，所以贪心放即可 Code```c++ includeusing namespace std;const int Nn=100005;int N,A[Nn],D[Nn],I[Nn],V[Nn],L=0,M=0;queueq;int main(){ scanf(“%d”,&amp;N); for(int i=1;i&lt;=N;i++) scanf(“%d”,&amp;A[i]),D[A[i]]++; for(int i=1;i&lt;=N;i++)if(!D[i])q.push(i),V[i]=1; while(!q.empty()){ int u=q.front(); q.pop(); int v=A[u]; if(!I[u]&amp;&amp;!V[v]) q.push(v),V[v]=1,I[v]=1,++M; if(!—D[v]&amp;&amp;!V[v]) q.push(v); } for(int i=1;i&lt;=N;i++) L+=D[i]&gt;0; printf(“%d\n”,M+L/2); return 0;}``]]></content>
+      <tags>
+        <tag>图论</tag>
+        <tag>贪心</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[小W与选座]]></title>
+    <url>%2F2018%2F10%2F20%2F6%2F</url>
+    <content type="text"><![CDATA[Code Level: ※ Thinking Level: ※※ Description有n个旅客。每个旅客从si上车，在ti下车。保证si&lt;ti。现在这n个旅客按照随机的顺序分别在网上订票。现在有两种订票的方式。第一种是每个人都可以在订票的时候自己选择座位，选的座位要求在si到ti中都没人选过，第二种是系统在所有n个人订完票之后安排座位。每个人要求行程中不换座位，且每个座位在任意时刻最多只能分配给一个人。当然，高铁中的座位数必须满足在任意订票顺序的情况下，都能够满足所有人的订票需求。 现在小W想知道，对于两种方案，他分别需要至少安排多少个座位。 Solution op1：求一条线段与其相交线段数量的最大值 op2：求一条线段与其包含线段数量的最大值 Details前缀和要加前缀 Code1234567891011121314151617181920212223242526272829303132333435363738394041424344454647#include&lt;bits/stdc++.h&gt;using namespace std;const int nn=200005;int n,a[nn],rot,las=0,ans1=0,sz=0,de[nn],ans2=0;struct tra&#123; int s,t; friend bool operator&lt;(tra a,tra b)&#123; return a.s&lt;b.s; &#125;&#125;e[nn];struct per&#123; int id,d; friend bool operator&lt;(per a,per b)&#123; return a.d&gt;b.d; &#125;&#125;; priority_queue&lt;per&gt;q;void r_i(int &amp;x)&#123; x=0; char c=getchar(); for(;!isdigit(c);c=getchar()); for(;isdigit(c);c=getchar()) x=x*10-'0'+c;&#125;int main()&#123; int i; scanf("%d",&amp;n); for(i=1;i&lt;=n;i++)&#123; r_i(e[i].s),r_i(e[i].t); las=max(las,e[i].t); &#125; sort(e+1,e+1+n); q.push((per)&#123;1,e[1].t&#125;); per he; for(i=2;i&lt;=n;i++)&#123; de[i]=de[i-1]; while(!q.empty())&#123; he=q.top(); if(he.d&gt;e[i].s) break ; ans1=max(ans1,i-de[he.id]-1); de[i]++; q.pop(); &#125; q.push((per)&#123;i,e[i].t&#125;); &#125; while(!q.empty())&#123; he=q.top(); q.pop(); ans1=max(ans1,n-de[he.id]); &#125; printf("%d ",ans1); q.push((per)&#123;1,e[1].t&#125;); sz=1; for(i=2;i&lt;=n;i++)&#123; while(!q.empty())&#123; he=q.top(); if(he.d&gt;e[i].s) break ; q.pop(); sz--; &#125; sz++; ans2=max(sz,ans2); q.push((per)&#123;i,e[i].t&#125;); &#125; printf("%d ",ans2); return 0;&#125;]]></content>
+      <tags>
+        <tag>贪心</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[异或]]></title>
+    <url>%2F2018%2F10%2F20%2F5%2F</url>
+    <content type="text"><![CDATA[Code Level: ※ Thinking Level: ※※※ Description一棵树，根编号1，原始带权，到第i+1天变为第i天子树节点的异或和。求 第x天 根编号 n, q ≤ 200000;\ \ \ Ai, x ≤ 10^{18}Solution对于一棵树，子树节点对根节点的贡献只与其深度有关进一步,第i天深度为j的子节点对根的贡献为第i-1天所有子树对根节点的贡献（第i-1天所有子树关深度于j节点的系数在第i天叠加），即 d_{i,j}=\sum_{k=0}^{kmax_{deep}时，天数x的ans=天数x\ mod\ max_{deep}的ans而n-1&amp;m=0的情况完全可以直接枚举n-1的满足条件的子集m去构成答案则最后答案也就等于 ans[((n-1)\ mod \ 2^k\ \ xor\ (2^k-1))]最后一步就是取 (n-1)\ mod\ 2^k关于域2^k的补Code12345678910111213141516171819202122232425262728293031323334#include&lt;bits/stdc++.h&gt;using namespace std;const int nn=200005;typedef long long ll;int n,q,mx,tot=0,lg=1,f[nn];ll a[nn],dep[nn],ans[1&lt;&lt;19];struct alp&#123; int t,n;&#125;e[nn*2];void ade(int x,int y)&#123;e[++tot]=(alp)&#123;y,f[x]&#125;;f[x]=tot;&#125;void run(int now,int pre,int deep)&#123; for(int i=f[now];i;i=e[i].n)&#123; int to=e[i].t; if(to==pre) continue ; run(to,now,deep+1); &#125; dep[deep]^=a[now]; mx=max(mx,deep);&#125;void rl(ll &amp;x)&#123; x=0; char c=getchar(); for(;!isdigit(c);c=getchar()); for(;isdigit(c);c=getchar()) x=x*10-'0'+c;&#125;int main()&#123; int j,i,x,y,pr; scanf("%d%d",&amp;n,&amp;q); for(i=1;i&lt;n;i++)&#123; scanf("%d%d",&amp;x,&amp;y); ++x;++y; ade(x,y); ade(y,x); &#125; for(i=1;i&lt;=n;i++) rl(a[i]); run(1,0,0); mx++; while(lg&lt;mx) lg&lt;&lt;=1; for(i=0;i&lt;mx;i++)&#123; pr=(lg-1)^i; for(j=pr;j;j=(j-1)&amp;pr) ans[i+j]^=dep[i]; ans[i]^=dep[i]; &#125; ll xx; for(i=1;i&lt;=q;i++)&#123; rl(xx); xx=(xx-1)%lg; printf("%lld\n",ans[xx^(lg-1)]); &#125; return 0;&#125;]]></content>
+      <tags>
+        <tag>数论</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[序列]]></title>
+    <url>%2F2018%2F10%2F20%2F4%2F</url>
+    <content type="text"><![CDATA[Code Level: ※ Thinking Level: ※ Description给一个长n的全0序列进行如下操作： 给[l,r]加上1 重复[l,r]的操作（操作保证合法） 求最终 a[n] Solution从后往前维护差分 Details 逆向思维 差分的逆推 Code1234567891011#include&lt;bits/stdc++.h&gt;using namespace std;const int nn=100005;const int mo=1e9+7;int n,q,a[nn],s[nn];struct atl&#123;int x,y,z;&#125;e[nn];int main()&#123; int i;scanf("%d%d",&amp;n,&amp;q); for(i=1;i&lt;=q;i++)scanf("%d%d%d",&amp;e[i].x,&amp;e[i].y,&amp;e[i].z); a[n+1]=0; s[q+1]=1; for(i=q;i&gt;0;i--)&#123; s[i]+=s[i+1]; if(e[i].x==1) a[e[i].y-1]-=s[i],a[e[i].z]+=s[i]; else s[e[i].y-1]-=s[i],s[e[i].z]+=s[i]; &#125; for(i=n;i&gt;0;i--) a[i]=((a[i]+a[i+1])%mo+mo)%mo; for(i=1;i&lt;=n;i++) printf("%d ",a[i]); return 0;&#125;]]></content>
+      <tags>
+        <tag>差分</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[源泉]]></title>
+    <url>%2F2018%2F10%2F20%2F3%2F</url>
+    <content type="text"><![CDATA[想要触碰却又缩回了手]]></content>
+      <tags>
+        <tag>娴</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[键盘]]></title>
+    <url>%2F2018%2F10%2F19%2F2%2F</url>
+    <content type="text"><![CDATA[Code Level: ※ Thinking Level: ※ Description现有长度为x的序列，以如下操作: 加 1（消耗 1） 全选（消耗 2） 复制（消耗 2） 粘贴（消耗 2） 删除（消耗 1） （删除一个或所选择） 求最小消耗使序列变为n Solution发现是一个以长度为节点的图，跑最短路即可 Details 删除操作只存在两种，删1或删所有，所以所有大于N的状态可以直接通过现状态推导 Code1234567891011121314151617181920212223242526272829303132333435363738#include&lt;queue&gt;#include&lt;cstdio&gt;#include&lt;cstring&gt;#include&lt;iostream&gt;#include&lt;algorithm&gt;using namespace std;const int Nn=2*1e6+5;int X,N,Dist[Nn],Vis[Nn]; queue&lt;int&gt;q;struct Alpha&#123; int id,d; friend bool operator&lt;(Alpha a,Alpha b)&#123; return a.d&gt;b.d; &#125;&#125;;void Bre(int i,int j,int w)&#123; if(Dist[i]&gt;Dist[j]+w)&#123; Dist[i]=Dist[j]+w; if(!Vis[i]) q.push(i); &#125;&#125;int main()&#123; scanf("%d%d",&amp;X,&amp;N); for(int i=0;i&lt;=N;i++) Dist[i]=0x3f3f3f3f; if(X&gt;N)&#123; Dist[0]=3; q.push(0); Vis[0]=1; Dist[N]=X-N;&#125; else&#123;Dist[X]=0; Dist[N]=N-X; q.push(X); Vis[X]=1;&#125; while(!q.empty())&#123; int now=q.front();q.pop(); if(now&lt;N) Bre(now+1,now,1); if(now)&#123; Bre(now-1,now,1); for(int i=1;i*now&lt;=N;i++) if(now*(i+1)&gt;N) Bre(N,now,4+2*i+now*(i+1)-N); else Bre(now*(i+1),now,i*2+4); &#125; Vis[now]=0; &#125; printf("%d\n",Dist[N]); return 0;&#125;]]></content>
+      <tags>
+        <tag>图论</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[序列]]></title>
+    <url>%2F2018%2F10%2F18%2F1%2F</url>
+    <content type="text"><![CDATA[Code Level : ※ Thingking Level: ※※ Description 给定长度为 n 的序列 a_n 和 x ,可以给一个连续的区间加 \ d \ (d \in [-x,x])求最长LIS长度 Solution 这题唯一的思维难度是它的小 trick 对于一个数，我们给它加上负值是无意义的，因为这等同于我们给其后的区间整体加上它的相反数 而进一步可得，我们只需要考虑加上值对其前面的贡献。而考虑最大值，即直接加上d Details 对于求最长LIS，考虑以一个单调栈来存储我们选择的序列： 那么，对于新加入的元素 x 和当前栈顶元素 y，考虑以 x 为尾的 LIS 如果 (x&gt;y) 直接将 x 加入栈尾，此时以 x 为尾的 LIS 长度为栈的大小 否则 以 x 尾的 LIS长度即为以栈中第一个大于等于x的 p 的为尾的 LIS 长度。根据贪心，我们可以用x去更新p，因为x&lt;=p 对于处理最终答案，我们只需考虑当前值加上x(x为能取得最大值)，其前能得到得 LIS 长度（上面所讲），和其后的值给x的贡献（即以x为头的LIS） Code1234567891011121314151617181920212223242526#include&lt;bits/stdc++.h&gt;using namespace std;const int nn=200005;int i,p,n,x,s[nn],a[nn],b[nn],q[nn],t=0,ans=0;int main()&#123; scanf("%d%d",&amp;n,&amp;x); x=abs(x); for(i=1;i&lt;=n;i++) scanf("%d",&amp;a[i]),b[i]=-a[i]; q[++t]=b[n]; for(i=n-1;i&gt;0;i--) if(q[t]&lt;b[i]) s[i]=t,q[++t]=b[i]; else &#123; p=lower_bound(q+1,q+1+t,b[i])-q; s[i]=p-1; q[p]=b[i];&#125; t=0; q[++t]=a[1]; for(i=2;i&lt;=n;i++)&#123; if(a[i]+x&gt;q[t]) ans=max(ans,t+s[i]+1); else &#123; p=lower_bound(q+1,q+1+t,a[i]+x)-q; ans=max(ans,p+s[i]); &#125; if(a[i]&gt;q[t]) q[++t]=a[i]; else &#123; p=lower_bound(q+1,q+1+t,a[i])-q; q[p]=a[i]; &#125; &#125; printf("%d\n",ans); return 0; &#125;]]></content>
+      <tags>
+        <tag>数论</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[牛奶销售]]></title>
+    <url>%2F2018%2F10%2F18%2F%E6%B5%8B%E8%AF%952%2F</url>
+    <content type="text"><![CDATA[Code Level : ※/※※※ Thingking Level: ※ Description 有向图，带负权，但环上不含负权边 Solution 对于SPFA的优化: 可以使用SLF和LLL(对于此题，LLL似乎加上反而慢) Code12345678910111213141516171819202122232425 #include&lt;bits/stdc++.h&gt; using namespace std; const int nn=500005; const int inf=0x3f3f3f3f; int n,p,r,s,t,f[nn],d[nn],vis[nn]; deque&lt;int&gt;q; struct al&#123; int t,n,c; &#125;e[nn*4]; void ade(int x,int y,int z)&#123;e[++t]=(al)&#123;y,f[x],z&#125;;f[x]=t;&#125; int main()&#123; int i,x,y,z; scanf("%d%d%d%d",&amp;n,&amp;p,&amp;r,&amp;s);for(i=1;i&lt;=p+r;i++)&#123;scanf("%d%d%d",&amp;x,&amp;y,&amp;z);ade(x,y,z);if(i&lt;=p)ade(y,x,z);&#125; for(i=1;i&lt;=n;i++) d[i]=inf; d[s]=0; q.push_front(s); while(!q.empty())&#123; x=q.front();q.pop_front();vis[x]=0; for(int i=f[x];i;i=e[i].n)&#123; int t=e[i].t; if(d[t]&gt;d[x]+e[i].c)&#123; d[t]=d[x]+e[i].c; if(!vis[t])&#123; vis[t]=1; if(q.empty()||d[t]&lt;d[q.front()]) q.push_front(t);else q.push_back(t); &#125; &#125; &#125; &#125; for(i=1;i&lt;=n;i++) if(d[i]==inf)printf("NO PATH\n"); else printf("%d\n",d[i]); return 0;&#125; 对于题目特性的分析 因为环上没有负权，意思是在环中是可以跑dijstra的。而对于负权边指向的点，只需要更新但不计入dijstra的松弛即可。 对于环的计数，我们必须当一个环所有的父亲都跑完最短路的时候才能进行优化，所有需要缩点+DAG Code12345678910111213141516171819202122232425262728293031323334353637383940414243444546#include&lt;bits/stdc++.h&gt;using namespace std;const int nn=1e4*5+5;const int inf=0x3f3f3f3f;int n,r,p,s,fl,t,k,f2[nn],f[nn],ti,df[nn],lo[nn],st[nn],fr,be[nn],rd[nn],t2,ds[nn],mi[nn],t3,f3[nn]; char c; queue&lt;int&gt;q; bool vis[nn],in[nn];struct al&#123; int t,n,c; &#125;e[nn*6],g[nn*6],e2[nn*6];void adl(int x,int y,int z)&#123;e[++t]=(al)&#123;y,f[x],z&#125;;f[x]=t;&#125;void adm(int x,int y,int z)&#123;g[++t2]=(al)&#123;y,f2[x],z&#125;;f2[x]=t2;&#125;void adk(int x,int y)&#123;e2[++t3]=(al)&#123;y,f3[x],0&#125;;f3[x]=t3;&#125;void r_i(int &amp;x)&#123; x=0; c=getchar(); fl=0; for(;!isdigit(c);c=getchar())if(c=='-')fl=1; for(;isdigit(c);c=getchar())x=x*10-'0'+c; if(fl) x=-x;&#125;void ru(int no)&#123; df[no]=lo[no]=++ti;st[++fr]=no; int to; in[no]=1; for(int i=f[no];i;i=e[i].n)&#123; to=e[i].t; if(in[to])&#123; if(!be[to]) lo[no]=min(lo[no],df[to]); continue ; &#125; ru(to); lo[no]=min(lo[no],lo[to]); &#125; if(df[no]==lo[no])&#123;++k;while(st[fr]!=no)adk(k,st[fr]),be[st[fr--]]=k;adk(k,st[fr]),be[st[fr--]]=k;&#125;&#125;struct bt&#123; int id,d; friend bool operator&lt;(bt a,bt b)&#123; return a.d&gt;b.d; &#125;&#125;; priority_queue&lt;bt&gt;pq; void di(int x)&#123; for(int i=f3[x];i;i=e2[i].n) pq.push((bt)&#123;e2[i].t,ds[e2[i].t]&#125;); while(!pq.empty())&#123; bt y=pq.top(); pq.pop(); if(vis[y.id]) continue ; vis[y.id]=1; for(int i=f[y.id];i;i=e[i].n)&#123; int z=e[i].t; if(ds[z]&gt;ds[y.id]+e[i].c)&#123; ds[z]=ds[y.id]+e[i].c; if(be[z]==be[y.id]) pq.push((bt)&#123;z,ds[z]&#125;); &#125; &#125; &#125;&#125;int main()&#123; r_i(n);r_i(r);r_i(p);r_i(s); int i,x,y,z; for(i=1;i&lt;=r+p;i++)&#123; r_i(x);r_i(y);r_i(z); adl(x,y,z); if(i&lt;=r)adl(y,x,z); &#125; ru(s); for(i=1;i&lt;=n;i++) ds[i]=inf; ds[s]=0; for(x=1;x&lt;=n;x++)if(in[x]) for(i=f[x];i;i=e[i].n)&#123;y=be[x];z=be[e[i].t]; if(y!=z) rd[z]++,adm(y,z,e[i].c); &#125; q.push(be[s]); adk(be[s],s); while(!q.empty())&#123; x=q.front(); q.pop(); di(x);//printf("%d %d\n",e2[i].t,ds[e2[i].t]); for(i=f2[x];i;i=g[i].n)&#123; y=g[i].t;rd[y]--; if(!rd[y])q.push(y); &#125; &#125; for(i=1;i&lt;=n;i++) if(ds[i]==inf) printf("NO PATH\n"); else printf("%d\n",ds[i]); return 0;&#125;]]></content>
+      <tags>
+        <tag>图论</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[祝福]]></title>
+    <url>%2F2018%2F10%2F18%2F%E7%A5%9D%E7%A6%8F%2F</url>
+    <content type="text"><![CDATA[为你的初生之日献上我最诚挚的赞美]]></content>
+      <tags>
+        <tag>娴</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Legend]]></title>
+    <url>%2F2018%2F10%2F17%2FWelcome%2F</url>
+    <content type="text"><![CDATA[Write The Code ,Change The World]]></content>
+      <tags>
+        <tag>典</tag>
+      </tags>
+  </entry>
+</search>
