@@ -1,6 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[已经没有什么好害怕的了]]></title>
+    <url>%2F2018%2F10%2F29%2F%E5%B7%B2%E7%BB%8F%E6%B2%A1%E6%9C%89%E4%BB%80%E4%B9%88%E5%A5%BD%E5%AE%B3%E6%80%95%E7%9A%84%E4%BA%86%2F</url>
+    <content type="text"><![CDATA[Code Level: ※ Thinking Level: ※※ Description给定了一个长度为n的括号串，求经过每一个位置的合法子串的个数 Solution A 差分因为一个合法串的贡献是使其所包含的串的ans得到含该串的方案数所以差分即可注意： 差分的增量和减量因为具有传递性（类似于递推），所以分开计算 Code A12345678910111213141516171819202122232425#include&lt;bits/stdc++.h&gt;using namespace std;typedef long long ll;const int nn=1000005;const ll mod=1e9+7;int til,n,sta[nn],l[nn],r[nn],lg[nn],rr[nn],f[nn],tot=0;char s[nn];int main()&#123; scanf("%d",&amp;til); while(til--)&#123; scanf("%s",s+1); n=strlen(s+1); tot=0; for(int i=1;i&lt;=n;i++)&#123; if(s[i]=='(') sta[++tot]=i; else if(tot)&#123; l[i+1]=sta[tot]; r[sta[tot--]]=i+1; &#125; &#125; ll ans=0; for(int i=n+1;i&gt;0;i--) rr[l[i]]+=++rr[i]; for(int i=1;i&lt;=n+1;i++) lg[r[i]]+=--lg[i]; for(int i=1;i&lt;=n;i++) f[i]=f[i-1]+rr[i]+lg[i],ans+=(i*f[i])%mod; printf("%lld\n",ans); &#125; return 0;&#125; Solution B 树形结构 注意，合法的括号序列是满足树形结构的即，包含与被包含组成了父子关系对于同层合法子串，如果是紧挨着，即可组成不同的方案数所以 ans_x=ans_{fa_x}+l_x*r_xCode B1234567891011121314151617181920212223242526272829303132333435363738394041424344454647#include&lt;bits/stdc++.h&gt;using namespace std;typedef long long ll;const int mod=1000000007;const int nn=1000005;int til,n,cnt=0,floo=0,lp[nn],out[nn],ano[nn],hav[nn],l[nn],r[nn],rp[nn];ll ans[nn];char s[nn];int main()&#123; scanf("%d",&amp;til); while(til--)&#123; scanf("%s",s+1); n=strlen(s+1); cnt=floo=0; memset(lp,0,sizeof(lp)); memset(rp,0,sizeof(rp)); memset(ano,0,sizeof(ano)); memset(l,0,sizeof(l)); memset(r,0,sizeof(r)); memset(hav,0,sizeof(hav)); for(int i=n;i&gt;0;i--)&#123; if(s[i]==')')&#123; cnt++; floo++; rp[floo]=i; &#125; else if(cnt&gt;0)&#123; cnt--; hav[floo]++; r[rp[floo]]=hav[floo]; if(s[i-1]=='(') hav[floo]=0; floo--; &#125; else floo=cnt=0; &#125; memset(hav,0,sizeof(hav)); floo=cnt=0; for(int i=1;i&lt;=n;i++)&#123; if(s[i]=='(')&#123; out[i]=lp[floo]; floo++; cnt++; lp[floo]=i; &#125; else if(cnt&gt;0)&#123; cnt--; ano[lp[floo]]=i; hav[floo]++; l[lp[floo]]=hav[floo]; if(s[i+1]==')') hav[floo]=0; floo--; &#125; else floo=cnt=0; &#125; memset(ans,0,sizeof(ans)); for(int i=1;i&lt;=n;i++) if(s[i]=='(')&#123; ans[i]=ans[ano[i]]=ans[out[i]]+(1ll*l[i]*r[ano[i]]); if(ans[i]==0) continue ; //printf("%d %d %d %d %d\n",ans[i],i,l[i],ano[i],r[ano[i]]); ans[n+1]+=(ans[i]*ano[i])%mod; ans[n+1]+=(ans[i]*i)%mod; &#125; printf("%lld\n",ans[n+1]); &#125; return 0;&#125; 总结 差分 差分确实考的时候没有想到突然感觉十分简单的样子但这种较为复杂的差分确实让我GG对于差分，重点在于贡献是连续的，如本题中，一个合法的括号序列给出的贡献是针对其内的括号序列（即其树形结构的子树）因此，连续贡献（且具有离线性），可以差分处理 树形结构 说实在做的时候没有想到它还有个名字这种做法思路清奇，先考虑序列特性，即合法序列是被包围的再来是考虑它是如何给出贡献的，即其和左右合法序列共同组成（被称作同层），和父亲序列给的贡献增量玄啊]]></content>
+      <tags>
+        <tag>差分</tag>
+        <tag>括号</tag>
+        <tag>栈</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[线段树什么的最讨厌了]]></title>
+    <url>%2F2018%2F10%2F29%2F%E7%BA%BF%E6%AE%B5%E6%A0%91%E4%BB%80%E4%B9%88%E7%9A%84%E6%9C%80%E8%AE%A8%E5%8E%8C%E4%BA%86%2F</url>
+    <content type="text"><![CDATA[Code Level: ※ Thinking Level: ※ Description给出最小的n使得区间[l,r]出现在了build(1,0,n)建出的线段树中，若无解（在limit范围内）输出-112345void build(int now,int l,int r)&#123; if(l==r) return ; int mid=l+r&gt;&gt;1; build(now*2,l,mid); build(now*2+1,mid,r);&#125; Solution每一个点寻找它的父亲，共四种选择，都搜索一下即可重点是此类搜索的剪枝，应考虑它的存在特性比如在此题，因为线段树是二叉树，所以可以用它作为一个子树其是否具有左侧森林（同层而言）来剪枝 Code1234567891011121314151617181920#include&lt;bits/stdc++.h&gt;using namespace std;int t,ll,rr,lim,ans;void search(int l,int r)&#123; if(l&lt;0||l&gt;r) return ; if(ans!=-1&amp;&amp;ans&lt;=r) return ; if(r&gt;lim) return ; if(l==0)&#123; if(ans==-1||ans&gt;r) ans=r; return ; &#125; int len=r-l+1; search(l-len,r); if(l-len-1&gt;=2*len-1||l-len-1==0) search(l-len-1,r); if(l&gt;=2*len) search(l,r+len); if(l&gt;=2*len-1) search(l,r+len-1);&#125;int main()&#123; scanf("%d",&amp;t); while(t--)&#123; scanf("%d%d%d",&amp;ll,&amp;rr,&amp;lim); ans=-1; search(ll,rr); printf("%d\n",ans); &#125; return 0;&#125; 总结搜索剪枝考虑一定要周全思考搜索本身的性质]]></content>
+      <tags>
+        <tag>搜索</tag>
+        <tag>剪枝</tag>
+        <tag>树</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[模仿游戏]]></title>
     <url>%2F2018%2F10%2F25%2F%E6%A8%A1%E4%BB%BF%E6%B8%B8%E6%88%8F%2F</url>
     <content type="text"><![CDATA[Code Level: ※ Thinking Level: ※※ DescriptionYJC最近看了《模仿游戏》。他对里面图灵破解ENIGMA的过程产生了兴趣，决定自己模拟一下这个过程。现在YJC正在破解一个2个转子的弱化版ENIGMA（没有反射器和连接板），他已经得到了明文和密文，他希望你能帮他破解出转子的布线方式。不知道ENIGMA的题目解释：初始时有两个大小为m的数组a和b，分别是0∼m−1的一个排列。进行n次操作，每一次操作在0∼m−1之间选一个数x，求出结果y=b[a[x]]，把x和y写下来。之后，a数组向前循环移动一次，即(a[0],a[1],…,a[m−2],a[m−1])变成(a[1],a[2],…,a[m−1],a[0]).当a数组变回初始状态时，b数组向前循环移动一次。现在已知所有的x和y，求一组符合条件的a和b的初值。 m^2]]></content>
