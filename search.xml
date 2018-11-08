@@ -1,6 +1,44 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[Poker]]></title>
+    <url>%2F2018%2F10%2F31%2FPoker%2F</url>
+    <content type="text"><![CDATA[Code Level: ※ Thinking Level: ※ DescriptionN张扑克（N为偶数），随机分配，分为N/2两堆，依次比较两堆中元素，第一队大，则A得分1，否则B的分1, 求A，B得分的期望,答案乘以N！ Solution首先明白，因为答案乘以N！，所求则变为了方案数。因为每一个元素在每一个位置是等概率的，所以每一对元素都会给出贡献，求出即可。计算过程需要long long Code123456789101112131415161718192021222324#include&lt;bits/stdc++.h&gt;using namespace std;typedef long long ll;const int nn=100005;const int mod=1e9+7;int n,a[nn];ll les[nn],mor[nn];ll ans=0,jc[nn];int main()&#123; scanf("%d",&amp;n); for(int i=1;i&lt;=n;i++) scanf("%d",&amp;a[i]); sort(a+1,a+1+n); a[0]=0; a[n+1]=0x3f3f3f3f; for(int i=1,j=0;i&lt;=n;i++)&#123; while(a[j+1]!=a[i]) ++j; les[i]=j; &#125; for(int i=n,j=n+1;i&gt;0;i--)&#123; while(a[j-1]!=a[i]) --j; mor[i]=n-j+1; &#125; jc[0]=1; for(int i=1;i&lt;=n;i++) jc[i]=(jc[i-1]*i)%mod; for(int i=1;i&lt;=n;i++) ans=(ans+n/2*les[i]%mod*jc[n-2])%mod; printf("%lld ",ans); ans=0; for(int i=1;i&lt;=n;i++) ans=(ans+n/2*(n-mor[i]-1)%mod*jc[n-2])%mod; printf("%lld\n",ans); return 0;&#125;]]></content>
+      <tags>
+        <tag>数学</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[10月31日考试反思]]></title>
+    <url>%2F2018%2F10%2F31%2F10%E6%9C%8831%E6%97%A5%E8%80%83%E8%AF%95%E6%80%BB%E7%BB%93%2F</url>
+    <content type="text"><![CDATA[Test Level: ※※]]></content>
+  </entry>
+  <entry>
+    <title><![CDATA[当那一天来临]]></title>
+    <url>%2F2018%2F10%2F30%2F%E5%BD%93%E9%82%A3%E4%B8%80%E5%A4%A9%E6%9D%A5%E4%B8%B4%2F</url>
+    <content type="text"><![CDATA[Code Level: ※ Thinking Level: ※※ DescriptionN件物品，每件物品要被三个机器依次加工，时间分别为 A_i,B_i,C_i(max_{B_i}=max(B_i)即，一条最长路径只会经过第二个机器一次以得到更多的第三个机器的权值叠加 现在，我们便可以得出最优图的构建方案对于两件物品，我们通过比较它们二者相互的贡献来确定方案即可 Code123456789101112131415161718192021222324#include&lt;bits/stdc++.h&gt;using namespace std;typedef long long ll;const int nn=100005;int n;struct dat&#123; int a,b,c; friend bool operator&lt;(dat a,dat b)&#123; return max(a.a+b.a+b.b+b.c,a.a+a.b+a.c+b.c)&lt;max(b.a+a.a+a.b+a.c,b.a+b.b+b.c+a.c); &#125;&#125;e[nn];int main()&#123; scanf("%d",&amp;n); for(int i=1;i&lt;=n;i++) scanf("%d%d%d",&amp;e[i].a,&amp;e[i].b,&amp;e[i].c); sort(e+1,e+1+n); ll aa=0,bb=0,cc=0; for(int i=1;i&lt;=n;i++)&#123; aa=aa+e[i].a; bb=max(aa,bb)+e[i].b; cc=max(bb,cc)+e[i].c; &#125; printf("%lld\n",cc); return 0;&#125;]]></content>
+      <tags>
+        <tag>贪心</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[假如战争明天爆发]]></title>
+    <url>%2F2018%2F10%2F30%2F%E5%81%87%E5%A6%82%E6%88%98%E4%BA%89%E6%98%8E%E5%A4%A9%E7%88%86%E5%8F%91%2F</url>
+    <content type="text"><![CDATA[Code Level: Thinking Level: ※ DescriptionN个站点，J在1站，R在N站，每个站带有权值，经过即可增权；J先手，轮到每个人时可选择让J向右走或者让R向左走；交互选择知道两人相遇（同一格子） Solution对于N为奇数：因为具有操作可具有对称性，所有J可以将答案控制在中间三格中，而R可选择让J停在中间或者两边 对于N为偶数：选择第一次即可使局面变为奇数，而J成了后手，推导过程相似 Code1234567891011121314151617#include&lt;bits/stdc++.h&gt;using namespace std;typedef long long ll;const int nn=10005;int n,a[nn],ans,t; ll sum[nn];int chk(int x)&#123; return sum[x]-sum[n]+sum[x-1]; &#125;int main()&#123; scanf("%d",&amp;t); while(t--)&#123; scanf("%d",&amp;n); for(int i=1;i&lt;=n;i++) scanf("%d",&amp;a[i]),sum[i]=sum[i-1]+a[i]; if(n&amp;1) ans=min(chk(n/2+1),max(chk(n/2+2),chk(n/2))); else ans=max(chk(n/2),chk(n/2+1)); if(ans==0) printf("tie\n"); else if(ans&gt;0) printf("win\n"); else printf("lose\n"); &#125; return 0;&#125;]]></content>
+      <tags>
+        <tag>博弈</tag>
+        <tag>分类讨论</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[强军战歌]]></title>
+    <url>%2F2018%2F10%2F30%2F%E5%BC%BA%E5%86%9B%E6%88%98%E6%AD%8C%2F</url>
+    <content type="text"><![CDATA[Code Level: ※ Thinking Level: ※※ Description给长为N的序列A，删数恰到A为非降序列，求删数方案 Solution先思考大范围（即删出一个长为i的非降序列的方案数） cnt_i:长为i的非降序列的个数ans=\sum_{i=1}^{i]]></content>
+      <tags>
+        <tag>树状数组</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[已经没有什么好害怕的了]]></title>
     <url>%2F2018%2F10%2F29%2F%E5%B7%B2%E7%BB%8F%E6%B2%A1%E6%9C%89%E4%BB%80%E4%B9%88%E5%A5%BD%E5%AE%B3%E6%80%95%E7%9A%84%E4%BA%86%2F</url>
     <content type="text"><![CDATA[Code Level: ※ Thinking Level: ※※ Description给定了一个长度为n的括号串，求经过每一个位置的合法子串的个数 Solution A 差分因为一个合法串的贡献是使其所包含的串的ans得到含该串的方案数所以差分即可注意： 差分的增量和减量因为具有传递性（类似于递推），所以分开计算 Code A12345678910111213141516171819202122232425#include&lt;bits/stdc++.h&gt;using namespace std;typedef long long ll;const int nn=1000005;const ll mod=1e9+7;int til,n,sta[nn],l[nn],r[nn],lg[nn],rr[nn],f[nn],tot=0;char s[nn];int main()&#123; scanf("%d",&amp;til); while(til--)&#123; scanf("%s",s+1); n=strlen(s+1); tot=0; for(int i=1;i&lt;=n;i++)&#123; if(s[i]=='(') sta[++tot]=i; else if(tot)&#123; l[i+1]=sta[tot]; r[sta[tot--]]=i+1; &#125; &#125; ll ans=0; for(int i=n+1;i&gt;0;i--) rr[l[i]]+=++rr[i]; for(int i=1;i&lt;=n+1;i++) lg[r[i]]+=--lg[i]; for(int i=1;i&lt;=n;i++) f[i]=f[i-1]+rr[i]+lg[i],ans+=(i*f[i])%mod; printf("%lld\n",ans); &#125; return 0;&#125; Solution B 树形结构 注意，合法的括号序列是满足树形结构的即，包含与被包含组成了父子关系对于同层合法子串，如果是紧挨着，即可组成不同的方案数所以 ans_x=ans_{fa_x}+l_x*r_xCode B1234567891011121314151617181920212223242526272829303132333435363738394041424344454647#include&lt;bits/stdc++.h&gt;using namespace std;typedef long long ll;const int mod=1000000007;const int nn=1000005;int til,n,cnt=0,floo=0,lp[nn],out[nn],ano[nn],hav[nn],l[nn],r[nn],rp[nn];ll ans[nn];char s[nn];int main()&#123; scanf("%d",&amp;til); while(til--)&#123; scanf("%s",s+1); n=strlen(s+1); cnt=floo=0; memset(lp,0,sizeof(lp)); memset(rp,0,sizeof(rp)); memset(ano,0,sizeof(ano)); memset(l,0,sizeof(l)); memset(r,0,sizeof(r)); memset(hav,0,sizeof(hav)); for(int i=n;i&gt;0;i--)&#123; if(s[i]==')')&#123; cnt++; floo++; rp[floo]=i; &#125; else if(cnt&gt;0)&#123; cnt--; hav[floo]++; r[rp[floo]]=hav[floo]; if(s[i-1]=='(') hav[floo]=0; floo--; &#125; else floo=cnt=0; &#125; memset(hav,0,sizeof(hav)); floo=cnt=0; for(int i=1;i&lt;=n;i++)&#123; if(s[i]=='(')&#123; out[i]=lp[floo]; floo++; cnt++; lp[floo]=i; &#125; else if(cnt&gt;0)&#123; cnt--; ano[lp[floo]]=i; hav[floo]++; l[lp[floo]]=hav[floo]; if(s[i+1]==')') hav[floo]=0; floo--; &#125; else floo=cnt=0; &#125; memset(ans,0,sizeof(ans)); for(int i=1;i&lt;=n;i++) if(s[i]=='(')&#123; ans[i]=ans[ano[i]]=ans[out[i]]+(1ll*l[i]*r[ano[i]]); if(ans[i]==0) continue ; //printf("%d %d %d %d %d\n",ans[i],i,l[i],ano[i],r[ano[i]]); ans[n+1]+=(ans[i]*ano[i])%mod; ans[n+1]+=(ans[i]*i)%mod; &#125; printf("%lld\n",ans[n+1]); &#125; return 0;&#125; 总结 差分 差分确实考的时候没有想到突然感觉十分简单的样子但这种较为复杂的差分确实让我GG对于差分，重点在于贡献是连续的，如本题中，一个合法的括号序列给出的贡献是针对其内的括号序列（即其树形结构的子树）因此，连续贡献（且具有离线性），可以差分处理 树形结构 说实在做的时候没有想到它还有个名字这种做法思路清奇，先考虑序列特性，即合法序列是被包围的再来是考虑它是如何给出贡献的，即其和左右合法序列共同组成（被称作同层），和父亲序列给的贡献增量玄啊]]></content>
