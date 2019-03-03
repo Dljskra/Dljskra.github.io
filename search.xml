@@ -126,8 +126,8 @@
     <content type="text"><![CDATA[Code Level: ※ Thinking Level: ※※ Description给定一个长度为 n 的序列 a，求 \sum_{ia_j}{a_i\ xor\ a_j}Solution按位计算贡献当前值ai能对答案造成的贡献为其每一位能造成的贡献之和 若此位为0，则贡献即为ai之前此位为1的值 若此位为1，则贡献即为ai之前此位为0的值 用树状数组来维护 Code1234567891011121314151617#include&lt;bits/stdc++.h&gt;using namespace std;typedef long long ll;const int Mx=1e5+5;int N,A[Mx];ll Ans=0,Tr[22][2][Mx];void D(int j,int p,int x)&#123;for(int i=x;i&lt;Mx;i+=i&amp;-i)Tr[j][p][i]++;&#125;ll S(int j,int p,int x)&#123;ll s=0;for(int i=x;i;i-=i&amp;-i)s+=Tr[j][p][i];return s;&#125;int main()&#123; scanf("%d",&amp;N); for(int i=1;i&lt;=N;i++) scanf("%d",&amp;A[i]); for(int i=N;i&gt;0;i--) for(int j=0;j&lt;=20;j++) if((1&lt;&lt;j)&amp;A[i]) Ans+=(1&lt;&lt;j)*S(j,0,A[i]-1),D(j,1,A[i]); else Ans+=(1&lt;&lt;j)*S(j,1,A[i]-1),D(j,0,A[i]); cout&lt;&lt;Ans&lt;&lt;endl; return 0;&#125;]]></content>
       <tags>
         <tag>贪心</tag>
-        <tag>树状数组</tag>
         <tag>二进制</tag>
+        <tag>树状数组</tag>
       </tags>
   </entry>
   <entry>
